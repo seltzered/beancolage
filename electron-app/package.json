@@ -3,7 +3,7 @@
   "name": "electron-app",
   "version": "0.0.0",
   "dependencies": {
-    "@theia/core": "latest",
+    "@theia/core": "1.25.0",
     "@theia/editor": "latest",
     "@theia/electron": "latest",
     "@theia/filesystem": "latest",
@@ -18,7 +18,7 @@
     "theia-widget": "0.0.0"
   },
   "devDependencies": {
-    "@theia/cli": "latest",
+    "@theia/cli": "1.25.0",
     "electron": "^15.3.5"
   },
   "scripts": {

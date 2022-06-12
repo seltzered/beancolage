@@ -3,7 +3,7 @@
   "name": "browser-app",
   "version": "0.0.0",
   "dependencies": {
-    "@theia/core": "latest",
+    "@theia/core": "1.25.0",
     "@theia/editor": "latest",
     "@theia/filesystem": "latest",
     "@theia/markers": "latest",
@@ -17,7 +17,7 @@
     "theia-widget": "0.0.0"
   },
   "devDependencies": {
-    "@theia/cli": "latest"
+    "@theia/cli": "1.25.0"
   },
   "scripts": {
     "prepare": "theia build --mode development",
