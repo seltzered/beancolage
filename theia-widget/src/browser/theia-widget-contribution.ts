@@ -6,8 +6,6 @@ import { Command, CommandRegistry } from '@theia/core/lib/common/command';
 import { FrontendApplicationStateService } from '@theia/core/lib/browser/frontend-application-state';
 import { WorkspaceService } from '@theia/workspace/lib/browser';
 import { MiniBrowserOpenHandler } from '@theia/mini-browser/lib/browser/mini-browser-open-handler';
-import URI from '@theia/core/lib/common/uri';
-// import { UriComponents } from '@theia/core/lib/common/uri';
 
 export const TheiaWidgetCommand: Command = { id: 'theia-widget:command' };
 
@@ -41,7 +39,7 @@ export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidge
     }
 
     async onStart(app: FrontendApplication): Promise<void> {
-        console.info('theia widget onStart fuck');
+        console.info('theia widget onStart');
         // if (!this.workspaceService.opened) {
             this.stateService.reachedState('ready').then(
                 () => this.openView({activate: false, reveal: true })
@@ -49,12 +47,7 @@ export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidge
         // }
 
         app.shell.onDidAddWidget(widget => {
-            console.info('theia widget open mini browser');
-            const myUri: URI = new URI('127.0.0.1:5000').withScheme('http')
-            this.miniBrowserOpenHandler.open(
-                myUri,
-                { widgetOptions: { ref: widget, mode: 'open-to-right' } }
-            );
+            console.info('theia widget onDidAddWidget');
         });
 
     }

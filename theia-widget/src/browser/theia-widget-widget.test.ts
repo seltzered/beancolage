@@ -24,12 +24,12 @@ describe('TheiaWidgetWidget', () => {
 
     it('should render react node correctly', async () => {
         const element = render(widget.render());
-        expect(element.queryByText('Display Message')).toBeTruthy();
+        expect(element.queryByText('Open Fava Home Tab')).toBeTruthy();
     });
 
-    it('should inject \'MessageService\'', () => {
-        const spy = jest.spyOn(widget as any, 'displayMessage')
-        widget['displayMessage']();
+    it('should inject \'MiniBrowserOpenHandler\'', () => {
+        const spy = jest.spyOn(widget as any, 'openFavaHomeTab')
+        widget['openFavaHomeTab']();
         expect(spy).toBeCalled();
     });
 

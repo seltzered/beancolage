@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { injectable, postConstruct, inject } from '@theia/core/shared/inversify';
-import { AlertMessage } from '@theia/core/lib/browser/widgets/alert-message';
 import { ReactWidget } from '@theia/core/lib/browser/widgets/react-widget';
-import { MessageService } from '@theia/core';
+
+import URI from '@theia/core/lib/common/uri';
+import { MiniBrowserOpenHandler } from '@theia/mini-browser/lib/browser/mini-browser-open-handler';
+
 
 @injectable()
 export class TheiaWidgetWidget extends ReactWidget {
@@ -10,8 +12,9 @@ export class TheiaWidgetWidget extends ReactWidget {
     static readonly ID = 'theia-widget:widget';
     static readonly LABEL = 'TheiaWidget Widget';
 
-    @inject(MessageService)
-    protected readonly messageService!: MessageService;
+    @inject(MiniBrowserOpenHandler)
+    protected miniBrowserOpenHandler: MiniBrowserOpenHandler;
+    
 
     @postConstruct()
     protected async init(): Promise < void> {
@@ -24,16 +27,20 @@ export class TheiaWidgetWidget extends ReactWidget {
     }
 
     render(): React.ReactElement {
-        const header = `This is a sample widget which simply calls the messageService
-        in order to display an info message to end users.`;
         return <div id='widget-container'>
-            <AlertMessage type='INFO' header={header} />
-            <button className='theia-button secondary' title='Display Message' onClick={_a => this.displayMessage()}>Display Message</button>
+            <button className='theia-button primary' title='Open Fava Home Tab' onClick={_a => this.openFavaHomeTab()}>Open Fava Tab</button>
         </div>
     }
 
-    protected displayMessage(): void {
-        this.messageService.info('Congratulations: TheiaWidget Widget Successfully Created!');
+    protected openFavaHomeTab(): void {
+        console.info('theia widget open mini browser button');
+        var myUri: URI = new URI('localhost:5000');
+        this.miniBrowserOpenHandler.open(
+            myUri,
+            { widgetOptions: { area: 'main', mode: 'tab-after' },
+            toolbar: 'show',
+            mode: 'open' }
+        );
     }
 
 }
