@@ -9,7 +9,7 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "1.25.0",
+    "@theia/core": "1.26.0",
     "@theia/mini-browser": "latest"
   },
   "devDependencies": {
