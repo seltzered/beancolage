@@ -1,5 +1,5 @@
-# theia-widget
-The example of how to build the Theia-based applications with the theia-widget.
+# fava-widget
+The example of how to build the Theia-based applications with the fava-widget.
 
 ## Getting started
 
@@ -49,7 +49,7 @@ Open http://localhost:3000 in the browser.
 
 *or* run the tests of a specific package with
 
-    cd theia-widget
+    cd fava-widget
     yarn test
     
 
@@ -61,7 +61,7 @@ Start watching all packages, including `browser-app`, of your application with
 
 *or* watch only specific packages with
 
-    cd theia-widget
+    cd fava-widget
     yarn watch
 
 and the browser example.
@@ -78,7 +78,7 @@ Start watching all packages, including `electron-app`, of your application with
 
 *or* watch only specific packages with
 
-    cd theia-widget
+    cd fava-widget
     yarn watch
 
 and the Electron example.
@@ -88,7 +88,7 @@ and the Electron example.
 
 Run the example as [described above](#Running-the-Electron-example)
 
-## Publishing theia-widget
+## Publishing fava-widget
 
 Create a npm user and login to the npm registry, [more on npm publishing](https://docs.npmjs.com/getting-started/publishing-npm-packages).
 

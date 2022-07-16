@@ -4,6 +4,6 @@ The example extension demonstrates how to contribute a custom widget (i.e. a vie
 
 ## How to use the widget example
 
-In the running application, open the widget using the menu "View" => "TheiaWidget Widget"
+In the running application, open the widget using the menu "View" => "FavaWidget Widget"
 To execute the test, run
     yarn test

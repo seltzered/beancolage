@@ -1,5 +1,5 @@
 {
-  "name": "theia-widget",
+  "name": "fava-widget",
   "keywords": [
     "theia-extension"
   ],
@@ -9,7 +9,8 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "latest"
+    "@theia/core": "1.26.0",
+    "@theia/mini-browser": "latest"
   },
   "devDependencies": {
     "rimraf": "latest",
@@ -17,7 +18,7 @@
     "@testing-library/react": "^11.2.7",
     "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.9.1",
     "ts-jest": "^26.5.6"
   },
   "scripts": {
@@ -29,7 +30,7 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/theia-widget-frontend-module"
+      "frontend": "lib/browser/fava-widget-frontend-module"
     }
   ]
 }
