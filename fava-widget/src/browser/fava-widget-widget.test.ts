@@ -9,13 +9,13 @@ FrontendApplicationConfigProvider.set({
 import URI from '@theia/core/lib/common/uri';
 import { MiniBrowserOpenHandler, MiniBrowserOpenerOptions } from '@theia/mini-browser/lib/browser/mini-browser-open-handler';
 import { ContainerModule, Container } from '@theia/core/shared/inversify';
-import { TheiaWidgetWidget } from './theia-widget-widget';
+import { FavaWidgetWidget } from './fava-widget-widget';
 import { render } from '@testing-library/react'
 
 
-describe('TheiaWidgetWidget', () => {
+describe('FavaWidgetWidget', () => {
 
-    let widget: TheiaWidgetWidget;
+    let widget: FavaWidgetWidget;
 
     beforeEach(async () => {
         const module = new ContainerModule( bind => {
@@ -23,11 +23,11 @@ describe('TheiaWidgetWidget', () => {
                 open(uri: URI, options?: MiniBrowserOpenerOptions): void {
                 }
             } as MiniBrowserOpenHandler);
-            bind(TheiaWidgetWidget).toSelf();
+            bind(FavaWidgetWidget).toSelf();
         });
         const container = new Container();
         container.load(module);
-        widget = container.resolve<TheiaWidgetWidget>(TheiaWidgetWidget);
+        widget = container.resolve<FavaWidgetWidget>(FavaWidgetWidget);
     });
 
     it('should render react node correctly', async () => {

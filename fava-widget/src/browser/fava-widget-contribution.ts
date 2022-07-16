@@ -1,16 +1,16 @@
 import { injectable, inject } from '@theia/core/shared/inversify';
 import { MenuModelRegistry } from '@theia/core';
-import { TheiaWidgetWidget } from './theia-widget-widget';
+import { FavaWidgetWidget } from './fava-widget-widget';
 import { AbstractViewContribution, FrontendApplicationContribution, FrontendApplication } from '@theia/core/lib/browser';
 import { Command, CommandRegistry } from '@theia/core/lib/common/command';
 import { FrontendApplicationStateService } from '@theia/core/lib/browser/frontend-application-state';
 import { WorkspaceService } from '@theia/workspace/lib/browser';
 import { MiniBrowserOpenHandler } from '@theia/mini-browser/lib/browser/mini-browser-open-handler';
 
-export const TheiaWidgetCommand: Command = { id: 'theia-widget:command' };
+export const FavaWidgetCommand: Command = { id: 'fava-widget:command' };
 
 @injectable()
-export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidgetWidget> implements FrontendApplicationContribution {
+export class FavaWidgetContribution extends AbstractViewContribution<FavaWidgetWidget> implements FrontendApplicationContribution {
 
     @inject(FrontendApplicationStateService)
     protected readonly stateService: FrontendApplicationStateService;
@@ -31,15 +31,15 @@ export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidge
      */
     constructor() {
         super({
-            widgetId: TheiaWidgetWidget.ID,
-            widgetName: TheiaWidgetWidget.LABEL,
+            widgetId: FavaWidgetWidget.ID,
+            widgetName: FavaWidgetWidget.LABEL,
             defaultWidgetOptions: { area: 'left' },
-            toggleCommandId: TheiaWidgetCommand.id
+            toggleCommandId: FavaWidgetCommand.id
         });
     }
 
     async onStart(app: FrontendApplication): Promise<void> {
-        console.info('theia widget onStart');
+        console.info('fava widget onStart');
         // if (!this.workspaceService.opened) {
             this.stateService.reachedState('ready').then(
                 () => this.openView({activate: false, reveal: true })
@@ -47,7 +47,7 @@ export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidge
         // }
 
         app.shell.onDidAddWidget(widget => {
-            console.info('theia widget onDidAddWidget');
+            console.info('fava widget onDidAddWidget');
         });
 
     }
@@ -71,7 +71,7 @@ export class TheiaWidgetContribution extends AbstractViewContribution<TheiaWidge
      * @param commands
      */
     registerCommands(commands: CommandRegistry): void {
-        commands.registerCommand(TheiaWidgetCommand, {
+        commands.registerCommand(FavaWidgetCommand, {
             execute: () => super.openView({ activate: false, reveal: true })
         });
     }

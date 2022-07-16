@@ -1,5 +1,5 @@
 {
-  "name": "theia-widget",
+  "name": "fava-widget",
   "keywords": [
     "theia-extension"
   ],
@@ -30,7 +30,7 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/theia-widget-frontend-module"
+      "frontend": "lib/browser/fava-widget-frontend-module"
     }
   ]
 }

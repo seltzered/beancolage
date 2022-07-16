@@ -7,12 +7,12 @@
     "start:browser": "yarn rebuild:browser && yarn --cwd browser-app start",
     "start:electron": "yarn rebuild:electron && yarn --cwd electron-app start",
     "watch": "lerna run --parallel watch",
-    "test": "cd theia-widget && yarn test"
+    "test": "cd fava-widget && yarn test"
   },
   "devDependencies": {
     "lerna": "2.4.0"
   },
   "workspaces": [
-    "theia-widget", "browser-app", "electron-app"
+    "fava-widget", "browser-app", "electron-app"
   ]
 }

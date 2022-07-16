@@ -14,7 +14,7 @@
     "@theia/process": "1.26.0",
     "@theia/terminal": "1.26.0",
     "@theia/workspace": "1.26.0",
-    "theia-widget": "0.0.0"
+    "fava-widget": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "1.26.0"

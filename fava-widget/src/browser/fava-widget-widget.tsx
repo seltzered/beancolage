@@ -7,10 +7,10 @@ import { MiniBrowserOpenHandler } from '@theia/mini-browser/lib/browser/mini-bro
 
 
 @injectable()
-export class TheiaWidgetWidget extends ReactWidget {
+export class FavaWidgetWidget extends ReactWidget {
 
-    static readonly ID = 'theia-widget:widget';
-    static readonly LABEL = 'TheiaWidget Widget';
+    static readonly ID = 'fava-widget:widget';
+    static readonly LABEL = 'FavaWidget Widget';
 
     @inject(MiniBrowserOpenHandler)
     protected miniBrowserOpenHandler: MiniBrowserOpenHandler;
@@ -18,11 +18,11 @@ export class TheiaWidgetWidget extends ReactWidget {
 
     @postConstruct()
     protected async init(): Promise < void> {
-        this.id = TheiaWidgetWidget.ID;
-        this.title.label = TheiaWidgetWidget.LABEL;
-        this.title.caption = TheiaWidgetWidget.LABEL;
+        this.id = FavaWidgetWidget.ID;
+        this.title.label = FavaWidgetWidget.LABEL;
+        this.title.caption = FavaWidgetWidget.LABEL;
         this.title.closable = true;
-        this.title.iconClass = 'theia-widget-tab-icon';
+        this.title.iconClass = 'fava-widget-tab-icon';
         this.update();
     }
 
@@ -33,7 +33,7 @@ export class TheiaWidgetWidget extends ReactWidget {
     }
 
     protected openFavaHomeTab(): void {
-        console.info('theia widget open mini browser button');
+        console.info('fava widget open mini browser button');
         var myUri: URI = new URI('localhost:5000');
         this.miniBrowserOpenHandler.open(
             myUri,
