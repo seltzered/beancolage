@@ -10,7 +10,7 @@
     "test": "cd fava-widget && yarn test"
   },
   "devDependencies": {
-    "lerna": "2.4.0"
+    "lerna": "^5.5.0"
   },
   "workspaces": [
     "beancolage-extension",
