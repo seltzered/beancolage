@@ -1,5 +1,5 @@
 {
-  "name": "fava-widget",
+  "name": "beancolage-extension",
   "keywords": [
     "theia-extension"
   ],
@@ -9,8 +9,8 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "1.26.0",
-    "@theia/mini-browser": "latest"
+    "@theia/core": "1.28.0",
+    "@theia/mini-browser": "1.28.0"
   },
   "devDependencies": {
     "rimraf": "latest",
@@ -30,7 +30,11 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/fava-widget-frontend-module"
+      "frontend": "lib/navigator-fava/browser/navigator-fava-frontend-module"
+    },
+    {
+      "frontend": "lib/process/browser/ves-process-service-frontend-module",
+      "backend": "lib/process/node/ves-process-service-backend-module"
     }
   ]
 }

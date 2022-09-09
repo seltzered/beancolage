@@ -6,7 +6,7 @@
     text-transform: uppercase;
 }
 
-.fava-widget-tab-icon {
-    -webkit-mask: url('fava-theia-icon.svg');
-    mask: url('fava-theia-icon.svg');
+.navigator-fava-tab-icon {
+    -webkit-mask: url('navigator-fava-icon.svg');
+    mask: url('navigator-fava-icon.svg');
 }
