@@ -1,5 +1,6 @@
-# fava-widget
-The example of how to build the Theia-based applications with the fava-widget.
+# beancolage
+
+This is an ongoing prototype of a plaintext accounting environment using theia-ide, beancount, fava, and more... 
 
 ## Getting started
 
@@ -15,6 +16,19 @@ Install npm and node.
 Install yarn.
 
     npm install -g yarn
+
+## Install dependencies
+
+Run the following commands to get started:
+
+Download vscode plugins (such as vscode-beancount):
+
+    yarn theia download:plugins
+
+Install and build:
+
+    yarn prepare
+
 
 ## Running the browser example
 
@@ -49,7 +63,7 @@ Open http://localhost:3000 in the browser.
 
 *or* run the tests of a specific package with
 
-    cd fava-widget
+    cd beancolage
     yarn test
     
 
@@ -61,7 +75,7 @@ Start watching all packages, including `browser-app`, of your application with
 
 *or* watch only specific packages with
 
-    cd fava-widget
+    cd beancolage
     yarn watch
 
 and the browser example.
@@ -78,7 +92,7 @@ Start watching all packages, including `electron-app`, of your application with
 
 *or* watch only specific packages with
 
-    cd fava-widget
+    cd beancolage
     yarn watch
 
 and the Electron example.
@@ -88,7 +102,7 @@ and the Electron example.
 
 Run the example as [described above](#Running-the-Electron-example)
 
-## Publishing fava-widget
+## Publishing beancolage
 
 Create a npm user and login to the npm registry, [more on npm publishing](https://docs.npmjs.com/getting-started/publishing-npm-packages).
 
