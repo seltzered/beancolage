@@ -4,10 +4,14 @@
     "prepare": "lerna run prepare",
     "rebuild:browser": "theia rebuild:browser",
     "rebuild:electron": "theia rebuild:electron",
-    "start:browser": "yarn rebuild:browser && yarn --cwd browser-app start",
-    "start:electron": "yarn rebuild:electron && yarn --cwd electron-app start",
+    "start:browser": "yarn rebuild:browser && yarn --cwd browser-app start --plugins=local-dir:../plugins",
+    "start:electron": "yarn rebuild:electron && yarn --cwd electron-app start --plugins=local-dir:../plugins",
     "watch": "lerna run --parallel watch",
-    "test": "cd fava-widget && yarn test"
+    "test": "cd beancolage-extension && yarn test"
+  },
+  "theiaPluginsDir": "plugins",
+  "theiaPlugins": {
+    "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix"
   },
   "devDependencies": {
     "lerna": "^5.5.0"
