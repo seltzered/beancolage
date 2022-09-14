@@ -66,7 +66,6 @@ import {
     TabBarToolbarRegistry
 } from '@theia/core/lib/browser/shell/tab-bar-toolbar';
 //import { FileSystemCommands } from '@theia/filesystem/lib/browser/filesystem-frontend-contribution';
-import { NavigatorDiff, NavigatorDiffCommands } from '@theia/navigator/lib/browser/navigator-diff';
 import { DirNode, FileNode } from '@theia/filesystem/lib/browser';
 import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
 import { ClipboardService } from '@theia/core/lib/browser/clipboard-service';
@@ -161,9 +160,6 @@ export namespace NavigatorContextMenu {
 
     export const WORKSPACE = [...NAVIGATOR_CONTEXT_MENU, '2_workspace'];
 
-    export const COMPARE = [...NAVIGATOR_CONTEXT_MENU, '3_compare'];
-    /** @deprecated use COMPARE */
-    export const DIFF = COMPARE;
 
     export const SEARCH = [...NAVIGATOR_CONTEXT_MENU, '4_search'];
     export const CLIPBOARD = [...NAVIGATOR_CONTEXT_MENU, '5_cutcopypaste'];
@@ -209,9 +205,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
 
     @inject(MenuModelRegistry)
     protected readonly menuRegistry: MenuModelRegistry;
-
-    @inject(NavigatorDiff)
-    protected readonly navigatorDiff: NavigatorDiff;
 
     @inject(PreferenceService)
     protected readonly preferenceService: PreferenceService;
@@ -398,20 +391,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             }
         });
 
-        registry.registerCommand(NavigatorDiffCommands.COMPARE_FIRST, {
-            execute: () => {
-                this.navigatorDiff.addFirstComparisonFile();
-            },
-            isEnabled: () => true,
-            isVisible: () => true
-        });
-        registry.registerCommand(NavigatorDiffCommands.COMPARE_SECOND, {
-            execute: () => {
-                this.navigatorDiff.compareFiles();
-            },
-            isEnabled: () => this.navigatorDiff.isFirstFileSelected,
-            isVisible: () => this.navigatorDiff.isFirstFileSelected
-        });
         registry.registerCommand(NavigatorFavaCommands.OPEN, {
             isEnabled: () => this.getSelectedFileNodes().length > 0,
             isVisible: () => this.getSelectedFileNodes().length > 0,
@@ -573,23 +552,11 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             commandId: WorkspaceCommands.NEW_FOLDER.id,
             when: 'explorerResourceIsFolder'
         });
-        registry.registerMenuAction(NavigatorContextMenu.COMPARE, {
-            commandId: WorkspaceCommands.FILE_COMPARE.id
-        });
         registry.registerMenuAction(NavigatorContextMenu.MODIFICATION, {
             commandId: NavigatorFavaCommands.COLLAPSE_ALL.id,
             label: nls.localizeByDefault('Collapse All'),
             order: 'z2'
         });
-
-        // registry.registerMenuAction(NavigatorContextMenu.COMPARE, {
-        //     commandId: NavigatorDiffCommands.COMPARE_FIRST.id,
-        //     order: 'za'
-        // });
-        // registry.registerMenuAction(NavigatorContextMenu.COMPARE, {
-        //     commandId: NavigatorDiffCommands.COMPARE_SECOND.id,
-        //     order: 'zb'
-        // });
 
         // Open Editors Widget Menu Items
         registry.registerMenuAction(OpenFavasContextMenu.CLIPBOARD, {
@@ -603,15 +570,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         registry.registerMenuAction(OpenFavasContextMenu.SAVE, {
             commandId: CommonCommands.SAVE.id,
             order: 'a'
-        });
-
-        registry.registerMenuAction(OpenFavasContextMenu.COMPARE, {
-            commandId: NavigatorDiffCommands.COMPARE_FIRST.id,
-            order: 'a'
-        });
-        registry.registerMenuAction(OpenFavasContextMenu.COMPARE, {
-            commandId: NavigatorDiffCommands.COMPARE_SECOND.id,
-            order: 'b'
         });
 
         registry.registerMenuAction(OpenFavasContextMenu.MODIFICATION, {
