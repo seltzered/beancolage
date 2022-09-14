@@ -144,7 +144,7 @@ export namespace NavigatorMoreToolbarGroups {
     export const WORKSPACE = '3_navigator_workspace';
 }
 
-export const NAVIGATOR_CONTEXT_MENU: MenuPath = ['navigator-context-menu'];
+export const NAVIGATOR_FAVA_CONTEXT_MENU: MenuPath = ['navigator-fava-context-menu'];
 export const SHELL_TABBAR_CONTEXT_REVEAL: MenuPath = [...SHELL_TABBAR_CONTEXT_MENU, '2_reveal'];
 
 /**
@@ -152,19 +152,18 @@ export const SHELL_TABBAR_CONTEXT_REVEAL: MenuPath = [...SHELL_TABBAR_CONTEXT_ME
  * with VS Code default groups: https://code.visualstudio.com/api/references/contribution-points#contributes.menus
  */
 export namespace NavigatorContextMenu {
-    export const NAVIGATION = [...NAVIGATOR_CONTEXT_MENU, 'navigation'];
+    export const NAVIGATION = [...NAVIGATOR_FAVA_CONTEXT_MENU, 'navigation'];
     /** @deprecated use NAVIGATION */
     export const OPEN = NAVIGATION;
     /** @deprecated use NAVIGATION */
     export const NEW = NAVIGATION;
 
-    export const WORKSPACE = [...NAVIGATOR_CONTEXT_MENU, '2_workspace'];
+    export const WORKSPACE = [...NAVIGATOR_FAVA_CONTEXT_MENU, '2_workspace'];
 
+    export const SEARCH = [...NAVIGATOR_FAVA_CONTEXT_MENU, '3_search'];
+    export const CLIPBOARD = [...NAVIGATOR_FAVA_CONTEXT_MENU, '4_cutcopypaste'];
 
-    export const SEARCH = [...NAVIGATOR_CONTEXT_MENU, '4_search'];
-    export const CLIPBOARD = [...NAVIGATOR_CONTEXT_MENU, '5_cutcopypaste'];
-
-    export const MODIFICATION = [...NAVIGATOR_CONTEXT_MENU, '7_modification'];
+    export const MODIFICATION = [...NAVIGATOR_FAVA_CONTEXT_MENU, '6_modification'];
     /** @deprecated use MODIFICATION */
     export const MOVE = MODIFICATION;
     /** @deprecated use MODIFICATION */

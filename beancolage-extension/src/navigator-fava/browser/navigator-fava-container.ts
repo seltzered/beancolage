@@ -22,12 +22,12 @@ import { createFileTreeContainer } from '@theia/filesystem/lib/browser';
 import { FileNavigatorTree } from '@theia/navigator/lib/browser/navigator-tree';
 import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
 import { NavigatorFavaWidget } from './navigator-fava-widget';
-import { NAVIGATOR_CONTEXT_MENU } from './navigator-fava-contribution';
+import { NAVIGATOR_FAVA_CONTEXT_MENU } from './navigator-fava-contribution';
 import { NavigatorDecoratorService } from '@theia/navigator/lib/browser/navigator-decorator-service';
 
 export const NAVIGATOR_FAVA_PROPS = <TreeProps>{
     ...defaultTreeProps,
-    contextMenuPath: NAVIGATOR_CONTEXT_MENU,
+    contextMenuPath: NAVIGATOR_FAVA_CONTEXT_MENU,
     multiSelect: true,
     search: true,
     globalSelection: true
