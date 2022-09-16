@@ -36,7 +36,6 @@ import {
     codicon,
     SHELL_TABBAR_CONTEXT_MENU
 } from '@theia/core/lib/browser';
-//import { FileDownloadCommands } from '@theia/filesystem/lib/browser/download/file-download-command-contribution';
 import {
     Command,
     CommandRegistry,
@@ -57,7 +56,6 @@ import { FAVA_EXPLORER_VIEW_CONTAINER_ID, FAVA_EXPLORER_VIEW_CONTAINER_TITLE_OPT
 import { FAVA_NAVIGATOR_ID, NavigatorFavaWidget } from './navigator-fava-widget';
 import { FileNavigatorPreferences } from '@theia/navigator/lib/browser/navigator-preferences';
 import { NavigatorFavaKeybindingContexts } from './navigator-fava-keybinding-context';
-//import { FileNavigatorFilter } from './navigator-filter';
 import { WorkspaceNode } from '@theia/navigator/lib/browser/navigator-tree';
 import { NavigatorContextKeyService } from '@theia/navigator/lib/browser/navigator-context-key-service';
 import {
@@ -65,7 +63,6 @@ import {
     TabBarToolbarItem,
     TabBarToolbarRegistry
 } from '@theia/core/lib/browser/shell/tab-bar-toolbar';
-//import { FileSystemCommands } from '@theia/filesystem/lib/browser/filesystem-frontend-contribution';
 import { DirNode, FileNode } from '@theia/filesystem/lib/browser';
 import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
 import { ClipboardService } from '@theia/core/lib/browser/clipboard-service';
@@ -119,14 +116,6 @@ export namespace NavigatorFavaCommands {
         category: CommonCommands.FILE_CATEGORY,
         label: 'Open'
     });
-    export const NEW_FILE_TOOLBAR: Command = {
-        id: `${WorkspaceCommands.NEW_FILE.id}.toolbar`,
-        iconClass: codicon('new-file')
-    };
-    export const NEW_FOLDER_TOOLBAR: Command = {
-        id: `${WorkspaceCommands.NEW_FOLDER.id}.toolbar`,
-        iconClass: codicon('new-folder')
-    };
 
     /**
      * @deprecated since 1.21.0. Use WorkspaceCommands.COPY_RELATIVE_FILE_COMMAND instead.
@@ -172,7 +161,6 @@ export namespace NavigatorContextMenu {
     export const OPEN_WITH = [...NAVIGATION, 'open_with'];
 }
 
-// export const FILE_NAVIGATOR_TOGGLE_COMMAND_ID = 'fileNavigator:toggle';
 
 
 export const NavigatorFavaCommand: Command = { id: 'navigator-fava:command' };
@@ -183,12 +171,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
      * `AbstractViewContribution` handles the creation and registering
      *  of the widget including commands, menus, and keybindings.
      */
-
-    // @inject(FrontendApplicationStateService)
-    // protected readonly stateService: FrontendApplicationStateService;
-
-    // @inject(WorkspaceService)
-    // protected readonly workspaceService: WorkspaceService;
 
     @inject(ClipboardService)
     protected readonly clipboardService: ClipboardService;
@@ -225,7 +207,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
     constructor(    
         @inject(FileNavigatorPreferences) protected readonly favaNavigatorPreferences: FileNavigatorPreferences,
         @inject(OpenerService) protected readonly openerService: OpenerService,
-        // @inject(FileNavigatorFilter) protected readonly fileNavigatorFilter: FileNavigatorFilter,
         @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService,
         @inject(WorkspacePreferences) protected readonly workspacePreferences: WorkspacePreferences
     ) {
@@ -275,17 +256,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         }
     }
 
-    // async onStart(app: FrontendApplication): Promise<void> {
-    //     console.info('fava navigator onStart');
-    //     // if (!this.workspaceService.opened) {
-    //         this.stateService.reachedState('ready').then(
-    //             () => this.openView({activate: false, reveal: true })
-    //         );
-    //     // }
-    //     app.shell.onDidAddWidget(widget => {
-    //         console.info('fava widget onDidAddWidget');
-    //     });
-    // }
 
     async onStart(app: FrontendApplication): Promise<void> {
         console.info('fava navigator onStart');
@@ -326,11 +296,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
      *
      * @param commands
      */
-    // registerCommands(commands: CommandRegistry): void {
-    //     commands.registerCommand(NavigatorFavaCommand, {
-    //         execute: () => super.openView({ activate: false, reveal: true })
-    //     });
-    // }
 
     override registerCommands(registry: CommandRegistry): void {
         super.registerCommands(registry);
@@ -346,13 +311,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             isEnabled: uri => !!this.workspaceService.getWorkspaceRootUri(uri),
             isVisible: uri => !!this.workspaceService.getWorkspaceRootUri(uri),
         }));
-        // registry.registerCommand(NavigatorFavaCommands.TOGGLE_HIDDEN_FILES, {
-        //     execute: () => {
-        //         this.fileNavigatorFilter.toggleHiddenFiles();
-        //     },
-        //     isEnabled: () => true,
-        //     isVisible: () => true
-        // });
         registry.registerCommand(NavigatorFavaCommands.TOGGLE_AUTO_REVEAL, {
             isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
             isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened),

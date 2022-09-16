@@ -1,20 +1,3 @@
-// import { ContainerModule } from '@theia/core/shared/inversify';
-// import { NavigatorFavaWidget } from './navigator-fava-widget';
-// import { NavigatorFavaContribution } from './navigator-fava-contribution';
-// import { bindViewContribution, FrontendApplicationContribution, WidgetFactory } from '@theia/core/lib/browser';
-
-// import '../../../src/navigator-fava/browser/style/index.css';
-
-// export default new ContainerModule(bind => {
-//     bindViewContribution(bind, NavigatorFavaContribution);
-//     bind(FrontendApplicationContribution).toService(NavigatorFavaContribution);
-//     bind(NavigatorFavaWidget).toSelf();
-//     bind(WidgetFactory).toDynamicValue(ctx => ({
-//         id: NavigatorFavaWidget.ID,
-//         createWidget: () => ctx.container.get<NavigatorFavaWidget>(NavigatorFavaWidget)
-//     })).inSingletonScope();
-// });
-
 // *****************************************************************************
 // based on @theia/navigator navigator-frontend-module.ts
 // *****************************************************************************
@@ -47,11 +30,7 @@ import { NavigatorFavaActiveContext } from './navigator-fava-keybinding-context'
 import { NavigatorFavaContribution } from './navigator-fava-contribution';
 import { createNavigatorFavaWidget } from './navigator-fava-container';
 import { WidgetFactory } from '@theia/core/lib/browser/widget-manager';
-import { bindFileNavigatorPreferences } from '@theia/navigator/lib/browser/navigator-preferences';
-// import { FileNavigatorFilter } from './navigator-filter';
-import { NavigatorContextKeyService } from '@theia/navigator/lib/browser/navigator-context-key-service';
 import { TabBarToolbarContribution } from '@theia/core/lib/browser/shell/tab-bar-toolbar';
-// import { NavigatorDiff } from './navigator-diff';
 import { NavigatorLayoutVersion3Migration, NavigatorLayoutVersion5Migration } from '@theia/navigator/lib/browser/navigator-layout-migrations';
 import { NavigatorTabBarDecorator } from '@theia/navigator/lib/browser/navigator-tab-bar-decorator';
 import { TabBarDecorator } from '@theia/core/lib/browser/shell/tab-bar-decorator';
@@ -65,10 +44,6 @@ import { NavigatorSymlinkDecorator } from '@theia/navigator/lib/browser/navigato
 import { FileTreeDecoratorAdapter } from '@theia/filesystem/lib/browser';
 
 export default new ContainerModule(bind => {
-    bindFileNavigatorPreferences(bind);
-    // bind(FileNavigatorFilter).toSelf().inSingletonScope();
-
-    bind(NavigatorContextKeyService).toSelf().inSingletonScope();
 
     bindViewContribution(bind, NavigatorFavaContribution);
     bind(FrontendApplicationContribution).toService(NavigatorFavaContribution);
