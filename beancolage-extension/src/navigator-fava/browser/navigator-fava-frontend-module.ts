@@ -32,13 +32,13 @@ import { createNavigatorFavaWidget } from './navigator-fava-container';
 import { WidgetFactory } from '@theia/core/lib/browser/widget-manager';
 import { TabBarToolbarContribution } from '@theia/core/lib/browser/shell/tab-bar-toolbar';
 import { NavigatorLayoutVersion3Migration, NavigatorLayoutVersion5Migration } from '@theia/navigator/lib/browser/navigator-layout-migrations';
-import { NavigatorTabBarDecorator } from '@theia/navigator/lib/browser/navigator-tab-bar-decorator';
+import { NavigatorFavaTabBarDecorator } from './navigator-fava-tab-bar-decorator';
 import { TabBarDecorator } from '@theia/core/lib/browser/shell/tab-bar-decorator';
 import { NavigatorFavaWidgetFactory } from './navigator-fava-widget-factory';
 import { bindContributionProvider } from '@theia/core/lib/common';
-import { OpenEditorsTreeDecorator } from '@theia/navigator/lib/browser/open-editors-widget/navigator-open-editors-decorator-service';
+import { OpenFavasTreeDecorator } from './open-favas-widget/navigator-open-favas-decorator-service';
 import { OpenFavasWidget } from './open-favas-widget/navigator-open-favas-widget';
-import { NavigatorTreeDecorator } from '@theia/navigator/lib/browser/navigator-decorator-service';
+import { NavigatorFavaTreeDecorator } from './navigator-fava-decorator-service';
 import { NavigatorDeletedEditorDecorator } from '@theia/navigator/lib/browser/open-editors-widget/navigator-deleted-editor-decorator';
 import { NavigatorSymlinkDecorator } from '@theia/navigator/lib/browser/navigator-symlink-decorator';
 import { FileTreeDecoratorAdapter } from '@theia/filesystem/lib/browser';
@@ -58,12 +58,12 @@ export default new ContainerModule(bind => {
         id: FAVA_NAVIGATOR_ID,
         createWidget: () => container.get(NavigatorFavaWidget)
     })).inSingletonScope();
-    bindContributionProvider(bind, NavigatorTreeDecorator);
-    bindContributionProvider(bind, OpenEditorsTreeDecorator);
-    bind(NavigatorTreeDecorator).toService(FileTreeDecoratorAdapter);
-    bind(OpenEditorsTreeDecorator).toService(FileTreeDecoratorAdapter);
+    bindContributionProvider(bind, NavigatorFavaTreeDecorator);
+    bindContributionProvider(bind, OpenFavasTreeDecorator);
+    bind(NavigatorFavaTreeDecorator).toService(FileTreeDecoratorAdapter);
+    bind(OpenFavasTreeDecorator).toService(FileTreeDecoratorAdapter);
     bind(NavigatorDeletedEditorDecorator).toSelf().inSingletonScope();
-    bind(OpenEditorsTreeDecorator).toService(NavigatorDeletedEditorDecorator);
+    bind(OpenFavasTreeDecorator).toService(NavigatorDeletedEditorDecorator);
 
     bind(WidgetFactory).toDynamicValue(({ container }) => ({
         id: OpenFavasWidget.ID,
@@ -76,11 +76,11 @@ export default new ContainerModule(bind => {
     bind(ApplicationShellLayoutMigration).to(NavigatorLayoutVersion5Migration).inSingletonScope();
 
     // bind(NavigatorDiff).toSelf().inSingletonScope();
-    bind(NavigatorTabBarDecorator).toSelf().inSingletonScope();
-    bind(FrontendApplicationContribution).toService(NavigatorTabBarDecorator);
-    bind(TabBarDecorator).toService(NavigatorTabBarDecorator);
+    bind(NavigatorFavaTabBarDecorator).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(NavigatorFavaTabBarDecorator);
+    bind(TabBarDecorator).toService(NavigatorFavaTabBarDecorator);
 
     bind(NavigatorSymlinkDecorator).toSelf().inSingletonScope();
-    bind(NavigatorTreeDecorator).toService(NavigatorSymlinkDecorator);
-    bind(OpenEditorsTreeDecorator).toService(NavigatorSymlinkDecorator);
+    bind(NavigatorFavaTreeDecorator).toService(NavigatorSymlinkDecorator);
+    bind(OpenFavasTreeDecorator).toService(NavigatorSymlinkDecorator);
 });

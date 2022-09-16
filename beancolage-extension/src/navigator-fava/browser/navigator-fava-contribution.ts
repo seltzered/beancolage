@@ -79,40 +79,40 @@ import { OpenFavasCommands } from './open-favas-widget/navigator-open-favas-comm
 
 export namespace NavigatorFavaCommands {
     export const REVEAL_IN_NAVIGATOR = Command.toLocalizedCommand({
-        id: 'navigator.reveal',
+        id: 'navigatorFava.reveal',
         label: 'Reveal in Explorer'
-    }, 'theia/navigator/reveal');
+    }, 'theia/navigatorFava/reveal');
     export const TOGGLE_HIDDEN_FILES = Command.toLocalizedCommand({
-        id: 'navigator.toggle.hidden.files',
+        id: 'navigatorFava.toggle.hidden.files',
         label: 'Toggle Hidden Files'
-    }, 'theia/navigator/toggleHiddenFiles');
+    }, 'theia/navigatorFava/toggleHiddenFiles');
     export const TOGGLE_AUTO_REVEAL = Command.toLocalizedCommand({
-        id: 'navigator.toggle.autoReveal',
+        id: 'navigatorFava.toggle.autoReveal',
         category: CommonCommands.FILE_CATEGORY,
         label: 'Auto Reveal'
-    }, 'theia/navigator/autoReveal', CommonCommands.FILE_CATEGORY_KEY);
-    export const REFRESH_NAVIGATOR = Command.toLocalizedCommand({
-        id: 'navigator.refresh',
+    }, 'theia/navigatorFava/autoReveal', CommonCommands.FILE_CATEGORY_KEY);
+    export const REFRESH_NAVIGATOR_FAVA = Command.toLocalizedCommand({
+        id: 'navigatorFava.refresh',
         category: CommonCommands.FILE_CATEGORY,
         label: 'Refresh in Explorer',
         iconClass: codicon('refresh')
-    }, 'theia/navigator/refresh', CommonCommands.FILE_CATEGORY_KEY);
+    }, 'theia/navigatorFava/refresh', CommonCommands.FILE_CATEGORY_KEY);
     export const COLLAPSE_ALL = Command.toDefaultLocalizedCommand({
-        id: 'navigator.collapse.all',
+        id: 'navigatorFava.collapse.all',
         category: CommonCommands.FILE_CATEGORY,
         label: 'Collapse Folders in Explorer',
         iconClass: codicon('collapse-all')
     });
     export const ADD_ROOT_FOLDER: Command = {
-        id: 'navigator.addRootFolder'
+        id: 'navigatorFava.addRootFolder'
     };
     export const FOCUS = Command.toDefaultLocalizedCommand({
-        id: 'workbench.files.action.focusFilesExplorer',
+        id: 'workbench.files.action.focusFavaExplorer',
         category: CommonCommands.FILE_CATEGORY,
-        label: 'Focus on Files Explorer'
+        label: 'Focus on Fava Explorer'
     });
     export const OPEN = Command.toDefaultLocalizedCommand({
-        id: 'navigator.open',
+        id: 'navigatorFava.open',
         category: CommonCommands.FILE_CATEGORY,
         label: 'Open'
     });
@@ -328,7 +328,7 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
             isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
         });
-        registry.registerCommand(NavigatorFavaCommands.REFRESH_NAVIGATOR, {
+        registry.registerCommand(NavigatorFavaCommands.REFRESH_NAVIGATOR_FAVA, {
             execute: widget => this.withWidget(widget, () => this.refreshWorkspace()),
             isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
             isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
@@ -573,21 +573,21 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
     }
 
     async registerToolbarItems(toolbarRegistry: TabBarToolbarRegistry): Promise<void> {
+        // toolbarRegistry.registerItem({
+        //     id: NavigatorFavaCommands.NEW_FILE_TOOLBAR.id,
+        //     command: NavigatorFavaCommands.NEW_FILE_TOOLBAR.id,
+        //     tooltip: nls.localizeByDefault('New File'),
+        //     priority: 0,
+        // });
+        // toolbarRegistry.registerItem({
+        //     id: NavigatorFavaCommands.NEW_FOLDER_TOOLBAR.id,
+        //     command: NavigatorFavaCommands.NEW_FOLDER_TOOLBAR.id,
+        //     tooltip: nls.localizeByDefault('New Folder'),
+        //     priority: 1,
+        // });
         toolbarRegistry.registerItem({
-            id: NavigatorFavaCommands.NEW_FILE_TOOLBAR.id,
-            command: NavigatorFavaCommands.NEW_FILE_TOOLBAR.id,
-            tooltip: nls.localizeByDefault('New File'),
-            priority: 0,
-        });
-        toolbarRegistry.registerItem({
-            id: NavigatorFavaCommands.NEW_FOLDER_TOOLBAR.id,
-            command: NavigatorFavaCommands.NEW_FOLDER_TOOLBAR.id,
-            tooltip: nls.localizeByDefault('New Folder'),
-            priority: 1,
-        });
-        toolbarRegistry.registerItem({
-            id: NavigatorFavaCommands.REFRESH_NAVIGATOR.id,
-            command: NavigatorFavaCommands.REFRESH_NAVIGATOR.id,
+            id: NavigatorFavaCommands.REFRESH_NAVIGATOR_FAVA.id,
+            command: NavigatorFavaCommands.REFRESH_NAVIGATOR_FAVA.id,
             tooltip: nls.localizeByDefault('Refresh Explorer'),
             priority: 2,
         });

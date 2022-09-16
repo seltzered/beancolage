@@ -65,7 +65,7 @@ export class NavigatorFavaWidgetFactory implements WidgetFactory {
     async createWidget(): Promise<ViewContainer> {
         const viewContainer = this.viewContainerFactory({
             id: FAVA_EXPLORER_VIEW_CONTAINER_ID,
-            progressLocationId: 'explorer'
+            progressLocationId: 'fava-explorer'
         });
         viewContainer.setTitleOptions(FAVA_EXPLORER_VIEW_CONTAINER_TITLE_OPTIONS);
         const openFavasWidget = await this.widgetManager.getOrCreateWidget(OpenFavasWidget.ID);

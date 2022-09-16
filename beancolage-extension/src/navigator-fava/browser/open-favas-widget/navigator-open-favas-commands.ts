@@ -19,7 +19,7 @@ import { Command } from '@theia/core/lib/common';
 
 export namespace OpenFavasCommands {
     export const CLOSE_ALL_TABS_FROM_TOOLBAR = Command.toDefaultLocalizedCommand({
-        id: 'navigator.close.all.editors.toolbar',
+        id: 'navigatorFava.close.all.editors.toolbar',
         category: CommonCommands.FILE_CATEGORY,
         label: 'Close All Editors',
         iconClass: 'codicon codicon-close-all'
@@ -33,7 +33,7 @@ export namespace OpenFavasCommands {
     // });
 
     export const CLOSE_ALL_FAVAS_IN_GROUP_FROM_ICON = Command.toDefaultLocalizedCommand({
-        id: 'navigator.close.all.in.area.icon',
+        id: 'navigatorFava.close.all.in.area.icon',
         category: CommonCommands.VIEW_CATEGORY,
         label: 'Close Group',
         iconClass: 'codicon codicon-close-all'
