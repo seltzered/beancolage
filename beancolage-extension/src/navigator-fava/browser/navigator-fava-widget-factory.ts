@@ -18,7 +18,6 @@
 
 import { inject, injectable } from '@theia/core/shared/inversify';
 import {
-    codicon,
     ViewContainer,
     ViewContainerTitleOptions,
     WidgetFactory,
@@ -31,7 +30,7 @@ import { nls } from '@theia/core/lib/common/nls';
 export const FAVA_EXPLORER_VIEW_CONTAINER_ID = 'fava-explorer-view-container';
 export const FAVA_EXPLORER_VIEW_CONTAINER_TITLE_OPTIONS: ViewContainerTitleOptions = {
     label: nls.localizeByDefault('Fava Explorer'),
-    iconClass: codicon('files'), //TODO: try changing to 'navigator-fava-tab-icon'
+    iconClass: 'navigator-fava-tab-icon',
     closeable: true
 };
 
