@@ -358,11 +358,11 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
                 });
             }
         });
-        registry.registerCommand(OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR, {
-            execute: widget => this.withOpenFavasWidget(widget, () => this.shell.closeMany(this.favaWidgets)),
-            isEnabled: widget => this.withOpenFavasWidget(widget, () => !!this.favaWidgets.length),
-            isVisible: widget => this.withOpenFavasWidget(widget, () => !!this.favaWidgets.length)
-        });
+        // registry.registerCommand(OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR, {
+        //     execute: widget => this.withOpenFavasWidget(widget, () => this.shell.closeMany(this.favaWidgets)),
+        //     isEnabled: widget => this.withOpenFavasWidget(widget, () => !!this.favaWidgets.length),
+        //     isVisible: widget => this.withOpenFavasWidget(widget, () => !!this.favaWidgets.length)
+        // });
         // registry.registerCommand(OpenFavasCommands.SAVE_ALL_TABS_FROM_TOOLBAR, {
         //     execute: widget => this.withOpenFavasWidget(widget, () => registry.executeCommand(CommonCommands.SAVE_ALL.id)),
         //     isEnabled: widget => this.withOpenFavasWidget(widget, () => !!this.favaWidgets.length),
@@ -386,16 +386,16 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         //     isVisible: () => false
         // });
 
-        registry.registerCommand(NavigatorFavaCommands.NEW_FILE_TOOLBAR, {
-            execute: (...args) => registry.executeCommand(WorkspaceCommands.NEW_FILE.id, ...args),
-            isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
-            isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
-        });
-        registry.registerCommand(NavigatorFavaCommands.NEW_FOLDER_TOOLBAR, {
-            execute: (...args) => registry.executeCommand(WorkspaceCommands.NEW_FOLDER.id, ...args),
-            isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
-            isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
-        });
+        // registry.registerCommand(NavigatorFavaCommands.NEW_FILE_TOOLBAR, {
+        //     execute: (...args) => registry.executeCommand(WorkspaceCommands.NEW_FILE.id, ...args),
+        //     isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
+        //     isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
+        // });
+        // registry.registerCommand(NavigatorFavaCommands.NEW_FOLDER_TOOLBAR, {
+        //     execute: (...args) => registry.executeCommand(WorkspaceCommands.NEW_FOLDER.id, ...args),
+        //     isEnabled: widget => this.withWidget(widget, () => this.workspaceService.opened),
+        //     isVisible: widget => this.withWidget(widget, () => this.workspaceService.opened)
+        // });
     }
 
     protected get favaWidgets(): NavigatableWidget[] {
@@ -491,7 +491,7 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             commandId: WorkspaceCommands.FILE_DUPLICATE.id
         });
 
-        // const downloadUploadMenu = [...NAVIGATOR_CONTEXT_MENU, '6_downloadupload'];
+        // const downloadUploadMenu = [...NAVIGATOR_FAVA_CONTEXT_MENU, '6_downloadupload'];
         // registry.registerMenuAction(downloadUploadMenu, {
         //     commandId: FileSystemCommands.UPLOAD.id,
         //     order: 'a'
@@ -605,12 +605,12 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             tooltip: NavigatorFavaCommands.TOGGLE_AUTO_REVEAL.label,
             group: NavigatorMoreToolbarGroups.TOOLS,
         });
-        this.registerMoreToolbarItem({
-            id: WorkspaceCommands.ADD_FOLDER.id,
-            command: WorkspaceCommands.ADD_FOLDER.id,
-            tooltip: WorkspaceCommands.ADD_FOLDER.label,
-            group: NavigatorMoreToolbarGroups.WORKSPACE,
-        });
+        // this.registerMoreToolbarItem({
+        //     id: WorkspaceCommands.ADD_FOLDER.id,
+        //     command: WorkspaceCommands.ADD_FOLDER.id,
+        //     tooltip: WorkspaceCommands.ADD_FOLDER.label,
+        //     group: NavigatorMoreToolbarGroups.WORKSPACE,
+        // });
 
         // Open Editors toolbar items.
         // toolbarRegistry.registerItem({
@@ -619,12 +619,12 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         //     tooltip: OpenFavasCommands.SAVE_ALL_TABS_FROM_TOOLBAR.label,
         //     priority: 0,
         // });
-        toolbarRegistry.registerItem({
-            id: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.id,
-            command: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.id,
-            tooltip: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.label,
-            priority: 1,
-        });
+        // toolbarRegistry.registerItem({
+        //     id: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.id,
+        //     command: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.id,
+        //     tooltip: OpenFavasCommands.CLOSE_ALL_TABS_FROM_TOOLBAR.label,
+        //     priority: 1,
+        // });
     }
 
     /**
