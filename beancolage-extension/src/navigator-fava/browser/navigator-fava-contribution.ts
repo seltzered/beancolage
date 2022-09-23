@@ -64,7 +64,7 @@ import {
     TabBarToolbarRegistry
 } from '@theia/core/lib/browser/shell/tab-bar-toolbar';
 import { DirNode, FileNode } from '@theia/filesystem/lib/browser';
-import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
+import { FileNavigatorFavaModel } from './navigator-fava-model';
 import { ClipboardService } from '@theia/core/lib/browser/clipboard-service';
 import { SelectionService } from '@theia/core/lib/common/selection-service';
 
@@ -242,7 +242,7 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
             return;
         }
         //TODO: change model to filter to just beancount files, have setting.
-        const model: FileNavigatorModel = navigator.model;
+        const model: FileNavigatorFavaModel = navigator.model;
         const parent = await model.revealFile(event.parent);
         if (DirNode.is(parent)) {
             await model.refresh(parent);

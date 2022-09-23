@@ -20,10 +20,10 @@ import { Container, interfaces } from '@theia/core/shared/inversify';
 import { TreeProps, defaultTreeProps } from '@theia/core/lib/browser';
 import { createFileTreeContainer } from '@theia/filesystem/lib/browser';
 import { FileNavigatorTree } from '@theia/navigator/lib/browser/navigator-tree';
-import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
+import { FileNavigatorFavaModel } from './navigator-fava-model';
 import { NavigatorFavaWidget } from './navigator-fava-widget';
 import { NAVIGATOR_FAVA_CONTEXT_MENU } from './navigator-fava-contribution';
-import { NavigatorDecoratorService } from '@theia/navigator/lib/browser/navigator-decorator-service';
+import { NavigatorFavaDecoratorService } from './navigator-fava-decorator-service';
 
 export const NAVIGATOR_FAVA_PROPS = <TreeProps>{
     ...defaultTreeProps,
@@ -36,9 +36,9 @@ export const NAVIGATOR_FAVA_PROPS = <TreeProps>{
 export function createNavigatorFavaContainer(parent: interfaces.Container): Container {
     const child = createFileTreeContainer(parent, {
         tree: FileNavigatorTree,
-        model: FileNavigatorModel,
+        model: FileNavigatorFavaModel,
         widget: NavigatorFavaWidget,
-        decoratorService: NavigatorDecoratorService,
+        decoratorService: NavigatorFavaDecoratorService,
         props: NAVIGATOR_FAVA_PROPS,
     });
 
