@@ -29,7 +29,7 @@ import { FileNode } from '@theia/filesystem/lib/browser';
 // import { WorkspaceService, WorkspaceCommands } from '@theia/workspace/lib/browser';
 // import { ApplicationShell } from '@theia/core/lib/browser/shell/application-shell';
 // import { WorkspaceNode, WorkspaceRootNode } from './navigator-tree';
-import { FileNavigatorModel } from '@theia/navigator/lib/browser/navigator-model';
+import { FileNavigatorFavaModel } from './navigator-fava-model';
 // import { isOSX, environment } from '@theia/core';
 // import * as React from '@theia/core/shared/react';
 // import { NavigatorContextKeyService } from './navigator-context-key-service';
@@ -87,7 +87,7 @@ export class NavigatorFavaWidget extends FileNavigatorWidget {
 
     constructor(
         @inject(TreeProps) props: TreeProps,
-        @inject(FileNavigatorModel) override readonly model: FileNavigatorModel,
+        @inject(FileNavigatorFavaModel) override readonly model: FileNavigatorFavaModel,
         @inject(ContextMenuRenderer) contextMenuRenderer: ContextMenuRenderer,
     ) {
         super(props, model, contextMenuRenderer);
