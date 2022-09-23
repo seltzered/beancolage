@@ -34,7 +34,8 @@ import { FileNavigatorFavaModel } from './navigator-fava-model';
 // import * as React from '@theia/core/shared/react';
 // import { NavigatorContextKeyService } from './navigator-context-key-service';
 // import { NavigatorContextKeyService } from '@theia/navigator/lib/browser/navigator-context-key-service'
-import { FileNavigatorWidget } from '@theia/navigator/lib/browser/navigator-widget'
+import { FileTreeWidget } from '@theia/filesystem/lib/browser';
+import { FileNavigatorWidget } from '@theia/navigator/lib/browser/navigator-widget';
 
 import { NavigatorFavaCommands } from './navigator-fava-contribution';
 import { nls } from '@theia/core/lib/common/nls';
@@ -198,6 +199,17 @@ export class NavigatorFavaWidget extends FileNavigatorWidget {
         };
         this.addEventListener(mainPanelNode, 'dragover', handler);
         this.addEventListener(mainPanelNode, 'dragenter', handler);
+    }
+
+    protected override tapNode(node?: TreeNode): void {
+        if (node && this.corePreferences['workbench.list.openMode'] === 'singleClick') {
+            console.info('fava tapNode');
+            this.model.previewNode(node);
+        }
+        // @ts-ignore In order to break the class inheritance contract,
+        // we have to break the TS visibility modifier contract as well
+        // to do effectively a 'super.super.tapNode' call.
+        FileTreeWidget.prototype.tapNode.call(this, node)
     }
 
 
