@@ -39,8 +39,8 @@ import { bindContributionProvider } from '@theia/core/lib/common';
 import { OpenFavasTreeDecorator } from './open-favas-widget/navigator-open-favas-decorator-service';
 import { OpenFavasWidget } from './open-favas-widget/navigator-open-favas-widget';
 import { NavigatorFavaTreeDecorator } from './navigator-fava-decorator-service';
-import { NavigatorDeletedEditorDecorator } from '@theia/navigator/lib/browser/open-editors-widget/navigator-deleted-editor-decorator';
 import { NavigatorSymlinkDecorator } from '@theia/navigator/lib/browser/navigator-symlink-decorator';
+import { NavigatorDeletedOpenFavasDecorator } from './open-favas-widget/navigator-deleted-open-favas-decorator';
 import { FileTreeDecoratorAdapter } from '@theia/filesystem/lib/browser';
 
 export default new ContainerModule(bind => {
@@ -62,8 +62,8 @@ export default new ContainerModule(bind => {
     bindContributionProvider(bind, OpenFavasTreeDecorator);
     bind(NavigatorFavaTreeDecorator).toService(FileTreeDecoratorAdapter);
     bind(OpenFavasTreeDecorator).toService(FileTreeDecoratorAdapter);
-    bind(NavigatorDeletedEditorDecorator).toSelf().inSingletonScope();
-    bind(OpenFavasTreeDecorator).toService(NavigatorDeletedEditorDecorator);
+    bind(NavigatorDeletedOpenFavasDecorator).toSelf().inSingletonScope();
+    bind(OpenFavasTreeDecorator).toService(NavigatorDeletedOpenFavasDecorator);
 
     bind(WidgetFactory).toDynamicValue(({ container }) => ({
         id: OpenFavasWidget.ID,
