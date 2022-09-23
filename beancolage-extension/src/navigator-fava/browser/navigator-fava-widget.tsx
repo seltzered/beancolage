@@ -21,7 +21,7 @@ import URI from '@theia/core/lib/common/uri';
 // import { CommandService } from '@theia/core/lib/common';
 
 // import { Key, TreeModel, SelectableTreeNode, OpenerService, ContextMenuRenderer, ExpandableTreeNode, TreeProps, TreeNode } from '@theia/core/lib/browser';
-import { SelectableTreeNode, ContextMenuRenderer, TreeProps } from '@theia/core/lib/browser';
+import { SelectableTreeNode, ContextMenuRenderer, TreeProps, TreeNode } from '@theia/core/lib/browser';
 
 // import { FileTreeWidget, FileNode, DirNode } from '@theia/filesystem/lib/browser';
 import { FileNode } from '@theia/filesystem/lib/browser';
