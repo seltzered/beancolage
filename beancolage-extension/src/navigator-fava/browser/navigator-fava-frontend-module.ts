@@ -39,8 +39,8 @@ import { bindContributionProvider } from '@theia/core/lib/common';
 import { OpenFavasTreeDecorator } from './open-favas-widget/navigator-open-favas-decorator-service';
 import { OpenFavasWidget } from './open-favas-widget/navigator-open-favas-widget';
 import { NavigatorFavaTreeDecorator } from './navigator-fava-decorator-service';
-import { NavigatorSymlinkDecorator } from '@theia/navigator/lib/browser/navigator-symlink-decorator';
 import { NavigatorDeletedOpenFavasDecorator } from './open-favas-widget/navigator-deleted-open-favas-decorator';
+import { NavigatorFavaSymlinkDecorator } from './navigator-fava-symlink-decorator';
 import { FileTreeDecoratorAdapter } from '@theia/filesystem/lib/browser';
 
 export default new ContainerModule(bind => {
@@ -80,7 +80,7 @@ export default new ContainerModule(bind => {
     bind(FrontendApplicationContribution).toService(NavigatorFavaTabBarDecorator);
     bind(TabBarDecorator).toService(NavigatorFavaTabBarDecorator);
 
-    bind(NavigatorSymlinkDecorator).toSelf().inSingletonScope();
-    bind(NavigatorFavaTreeDecorator).toService(NavigatorSymlinkDecorator);
-    bind(OpenFavasTreeDecorator).toService(NavigatorSymlinkDecorator);
+    bind(NavigatorFavaSymlinkDecorator).toSelf().inSingletonScope();
+    bind(NavigatorFavaTreeDecorator).toService(NavigatorFavaSymlinkDecorator);
+    bind(OpenFavasTreeDecorator).toService(NavigatorFavaSymlinkDecorator);
 });
