@@ -33,6 +33,9 @@
       "frontend": "lib/navigator-fava/browser/navigator-fava-frontend-module"
     },
     {
+      "frontend": "lib/fava-interface/browser/fava-interface-frontend-module"
+    },
+    {
       "frontend": "lib/process/browser/ves-process-service-frontend-module",
       "backend": "lib/process/node/ves-process-service-backend-module"
     }
