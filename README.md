@@ -1,113 +1,141 @@
-# beancolage
+# Beancolage
 
-This is an ongoing prototype of a plaintext accounting environment using theia-ide, beancount, fava, and more... 
+TODO: Image
 
-## Getting started
+This is an ongoing prototype of a plaintext accounting environment based on Eclipse Theia and including Beancount, VSCode-Beancount, and Fava.
 
-Install [nvm](https://github.com/creationix/nvm#install-script).
+⚠️ This is a prototype currently in early development. Feel free to file an issue if you have questions or interest in contributing.
 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+## Motivation & Limitations
 
-Install npm and node.
+TODO: Image
 
-    nvm install 10
-    nvm use 10
+The aspiration of Beancolage is to provide a more 'download and try' experience for [plaintext accounting](https://plaintextaccounting.org/), centered around [Beancount](https://beancount.github.io/) and [Fava](https://beancount.github.io/fava/index.html). The hope is to make the plaintext accounting experience accessible beyond just those with deep technical expertise, potentially to assist in group/organization bookkeeping. This said, Beancolage is intended to be a [_bricolage_](https://en.wikipedia.org/wiki/Bricolage) and not intended to be a fully-integrated accounting tool.
 
-Install yarn.
+### Can I use this for a full workflow including importing from my bank?
 
-    npm install -g yarn
-
-## Install dependencies
-
-Run the following commands to get started:
-
-Download vscode plugins (such as vscode-beancount):
-
-    yarn theia download:plugins
-
-Install and build:
-
-    yarn prepare
+No, this is a missing piece of Beancolage right now, and may be explored later. Generally importers in the plaintext accounting space have been a challenge to collaboratively develop on - for now you might want to check the [external contribution](https://beancount.github.io/docs/external_contributions.html) guides on importing, such as [The Five Minute Ledger Update](https://reds-rants.netlify.app/personal-finance/the-five-minute-ledger-update/).
 
 
-## Running the browser example
+## License
 
-    yarn start:browser
+Beancolage is built upon Eclipse Theia, a framework for building cloud and desktop IDEs.
 
-*or:*
+- [Eclipse Public License 2.0](LICENSE)
+- [一 (Secondary) GNU General Public License, version 2 with the GNU Classpath Exception](LICENSE)
 
-    yarn rebuild:browser
-    cd browser-app
-    yarn start
+Beancolage also uses:
 
-*or:* launch `Start Browser Backend` configuration from VS code.
+- [vscode-beancount](https://github.com/Lencerf/vscode-beancount) by Lencerf (MIT License)
+- [ves-process](https://github.com/VUEngine/VUEngine-Studio/tree/master/extensions/vuengine-studio-extension/src/process) from [VUEngine Studio](https://github.com/VUEngine/VUEngine-Studio) (Eclipse Public License v2.0)
 
-Open http://localhost:3000 in the browser.
+Future releases of Beancolage plan to include:
 
-## Running the Electron example
+- [Beancount](https://beancount.github.io/) (GNU GPLv2 License)
+- [Fava](https://beancount.github.io/fava/index.html) (MIT License) 
 
-    yarn start:electron
+## Repository Structure
 
-*or:*
+This repository is inspired by [Theia-Blueprint](https://github.com/eclipse-theia/theia-blueprint) with various UI extensions.
 
-    yarn rebuild:electron
-    cd electron-app
-    yarn start
+- Root level configures mono-repo build with lerna
+- `applications` groups the different app targets
+  - `electron` contains app to package, packaging configuration, and E2E tests for the electron target.
+- `beancolage-extension` groups the various extensions, within `src` there is:
+  - `navigator-fava` - A navigation panel for opening beancount files in Fava, and to see open Fava views (based on [open-editors-widget](https://github.com/eclipse-theia/theia/pull/9284/commits/a0472f6186d5d26a5b54f9b8c7ab7697c2d83f42)) 
+  - `fava-interface` - manages Fava server, notably adding in file arguments.
+  - `process` - copy of [ves-process](https://github.com/VUEngine/VUEngine-Studio/tree/master/extensions/vuengine-studio-extension/src/process) from [VUEngine Studio](https://github.com/VUEngine/VUEngine-Studio)
 
-*or:* launch `Start Electron Backend` configuration from VS code.
 
+## Getting Started
 
-## Running the tests
+### Prequisite Installs
 
-    yarn test
+At this time, builds only work if you have Beancount and Fava installed such that `fava` by command line can be called. 
 
-*or* run the tests of a specific package with
+0. Install [Fava], assuming you already have Python installed this can be done via:
 
-    cd beancolage
-    yarn test
-    
+```sh
+pip install fava
+```
 
-## Developing with the browser example
+### Install Beancolage
 
-Start watching all packages, including `browser-app`, of your application with
+TODO
 
-    yarn watch
+## Building Beancolage
 
-*or* watch only specific packages with
+### Prerequisites
 
-    cd beancolage
-    yarn watch
+0. Clone this repository. 
 
-and the browser example.
+0. Install [nvm](https://github.com/creationix/nvm#install-script).
 
-    cd browser-app
-    yarn watch
+0. Install npm and node.
 
-Run the example as [described above](#Running-the-browser-example)
-## Developing with the Electron example
+```sh
+nvm install --lts
+```
 
-Start watching all packages, including `electron-app`, of your application with
+```sh
+nvm use --lts`
+```
 
-    yarn watch
+0. Install yarn.
 
-*or* watch only specific packages with
+```sh
+npm install -g yarn
+```
 
-    cd beancolage
-    yarn watch
+### (optional) Download vscode plugins
 
-and the Electron example.
+If adding or updating any vscode plugins (e.g. vscode-beancount) you may need to do:
 
-    cd electron-app
-    yarn watch
+```sh
+yarn theia download:plugins
+```
 
-Run the example as [described above](#Running-the-Electron-example)
+### (optional) Prepare
 
-## Publishing beancolage
+```sh
+yarn prepare
+```
 
-Create a npm user and login to the npm registry, [more on npm publishing](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+### Build
 
-    npm login
+```sh
+yarn
+```
 
-Publish packages with lerna to update versions properly across local packages, [more on publishing with lerna](https://github.com/lerna/lerna#publish).
+### Package the Application
 
-    npx lerna publish
+```sh
+yarn electron package
+```
+
+The packaged application is located in `applications/electron/dist`.
+
+### Create a Preview Application (without packaging it)
+
+```sh
+yarn electron package:preview
+```
+
+The packaged application is located in `applications/electron/dist`.
+
+### Running E2E Tests
+
+The E2E tests basic UI tests of the actual application.
+This is done based on the preview of the packaged application.
+
+```sh
+yarn electron package:preview
+yarn electron test
+```
+
+### Troubleshooting
+TODO
+
+### Reporting Feature Requests and Bugs
+TODO
+

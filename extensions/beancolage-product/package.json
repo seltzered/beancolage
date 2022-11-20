@@ -1,0 +1,52 @@
+{
+  "private": true,
+  "name": "beancolage-product",
+  "version": "0.0.0",
+  "description": "Beancolage Product Branding",
+  "dependencies": {
+    "@theia/core": "1.31.1",
+    "@theia/getting-started": "1.31.1",
+    "@theia/vsx-registry": "1.31.1",
+    "@theia/workspace": "1.31.1",
+    "inversify": "^5.1.1"
+  },
+  "devDependencies": {
+    "rimraf": "^2.7.1",
+    "tslint": "^5.12.0",
+    "typescript": "^4.5.5"
+  },
+  "theiaExtensions": [
+    {
+      "frontendElectron": "lib/browser/theia-blueprint-frontend-module",
+      "electronMain": "lib/electron-main/theia-blueprint-main-module",
+      "backend": "lib/node/theia-blueprint-backend-module"
+    }
+  ],
+  "keywords": [
+    "theia-extension"
+  ],
+  "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seltzered/beancolage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seltzered/beancolage/issues"
+  },
+  "homepage": "https://github.com/seltzered/beancolage",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "prepare": "yarn clean && yarn build",
+    "clean": "rimraf lib *.tsbuildinfo",
+    "build": "tsc -b",
+    "lint": "eslint --ext js,jsx,ts,tsx src",
+    "lint:fix": "eslint --ext js,jsx,ts,tsx src --fix",
+    "update:next": "ts-node ../../scripts/update-theia-to-next.ts"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  }
+}

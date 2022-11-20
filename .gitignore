@@ -1,7 +1,10 @@
-node_modules
-.browser_modules
-lib
-plugins
+.DS_Store
+**/node_modules
+**/.browser_modules
+**/dist
+**/lib
+**/src-gen
+**/gen-webpack.config.js
+**/plugins
+**/tsconfig.tsbuildinfo
 *.log
-*-app/*
-!*-app/package.json

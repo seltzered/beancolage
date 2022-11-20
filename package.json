@@ -1,24 +1,54 @@
 {
   "private": true,
-  "scripts": {
-    "prepare": "lerna run prepare",
-    "rebuild:browser": "theia rebuild:browser",
-    "rebuild:electron": "theia rebuild:electron",
-    "start:browser": "yarn rebuild:browser && yarn --cwd browser-app start --plugins=local-dir:../plugins",
-    "start:electron": "yarn rebuild:electron && yarn --cwd electron-app start --plugins=local-dir:../plugins",
-    "watch": "lerna run --parallel watch",
-    "test": "cd beancolage-extension && yarn test"
+  "version": "0.1",
+  "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+  "author": "Beancolage Contributors",
+  "homepage": "https://github.com/seltzered/beancolage#readme",
+  "bugs": {
+    "url": "https://github.com/seltzered/beancolage/issues"
   },
-  "theiaPluginsDir": "plugins",
-  "theiaPlugins": {
-    "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seltzered/beancolage.git"
+  },
+  "engines": {
+    "yarn": ">=1.7.0 <2",
+    "node": ">=12.14.1"
   },
   "devDependencies": {
-    "lerna": "^5.5.0"
+    "@theia/cli": "1.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "eslint": "^7.27.0",
+    "eslint-plugin-deprecation": "1.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-no-unsanitized": "^3.1.5",
+    "eslint-plugin-react": "^7.23.2",
+    "lerna": "^6.0.1",
+    "rimraf": "^2.7.1",
+    "ts-node": "^10.0.0",
+    "type-fest": "^0.20.2",
+    "yargs": "17.2.1"
+  },
+  "scripts": {
+    "prepare": "lerna run prepare",
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix",
+    "clean": "lerna run clean && rimraf node_modules",
+    "build": "lerna run build",
+    "bundle": "lerna run bundle",
+    "watch": "lerna run --parallel watch",
+    "test": "lerna run test",
+    "electron": "yarn --cwd applications/electron",
+    "update:next": "ts-node scripts/update-theia-to-next.ts && lerna run update:next"
   },
   "workspaces": [
-    "beancolage-extension",
-    "browser-app",
-    "electron-app"
-  ]
+    "applications/*",
+    "extensions/*"
+  ],
+  "resolutions": {
+    "**/multer": "1.4.4-lts.1"
+  }
 }
