@@ -58,7 +58,7 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
     </div>;
 }
 
-export function renderWhatIsNot(): React.ReactNode {
+export function renderWhatIsNot(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
             What is it not?

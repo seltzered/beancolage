@@ -69,7 +69,7 @@ export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
             </div>
             <div className='flex-grid'>
                 <div className='col'>
-                    {renderWhatIsNot()}
+                    {renderWhatIsNot(this.windowService)}
                 </div>
             </div>
             <div className='flex-grid'>

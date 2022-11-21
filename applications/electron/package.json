@@ -6,7 +6,7 @@
   "version": "1.31.1",
   "main": "scripts/beancolage-electron-main.js",
   "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
-  "author": "Beancolage Contributors",
+  "author": "Beancolage Contributors <beancolage@gmail.com>",
   "homepage": "https://github.com/seltzered/beancolage#readme",
   "bugs": {
     "url": "https://github.com/seltzered/beancolage/issues"
@@ -84,9 +84,8 @@
     "@theia/vsx-registry": "1.31.1",
     "@theia/workspace": "1.31.1",
     "fs-extra": "^9.0.1",
-    "theia-blueprint-updater": "1.31.1",
-    "theia-blueprint-product": "1.31.1",
-    "beancolage-extension": "0.0.0"
+    "beancolage-extension": "0.0.0",
+    "beancolage-product": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "1.31.1",
