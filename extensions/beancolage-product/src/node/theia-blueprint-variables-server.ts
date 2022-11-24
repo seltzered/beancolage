@@ -23,7 +23,7 @@ import { EnvVariablesServerImpl } from '@theia/core/lib/node/env-variables';
 @injectable()
 export class TheiaBlueprintEnvVariableServer extends EnvVariablesServerImpl {
 
-    protected readonly _configDirUri: string = FileUri.create(path.join(os.homedir(), '.theia-blueprint')).toString(true);
+    protected readonly _configDirUri: string = FileUri.create(path.join(os.homedir(), '.beancolage')).toString(true);
 
     async getConfigDirUri(): Promise<string> {
         return this._configDirUri;
