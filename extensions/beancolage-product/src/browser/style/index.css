@@ -14,8 +14,12 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
+/* NOTE: the '!important' var settings are a workround until
+   https://github.com/eclipse-theia/theia/issues/8060 is implemented */
 :root {
     --theia-branding-logo: url(../icons/TheiaBlueprintLogo-blue.png);
+    --theia-statusBar-background: #005d37 !important;
+    --theia-statusBar-noFolderBackground: #00b56b !important;
 }
 
 .gs-blue-header {
