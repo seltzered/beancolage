@@ -50,10 +50,14 @@
 
         @keyframes beancolage-spinner {
             0% {
+                filter: brightness(100%);
                 transform: scale(1.0) rotate(0deg);
             }
+            50% {
+                filter: brightness(90%);
+            }
             100% {
-                transform: scale(1.0) rotate(180deg);
+                filter: brightness(100%);
             }
         }
     </style>
