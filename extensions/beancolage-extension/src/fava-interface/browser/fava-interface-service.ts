@@ -30,6 +30,8 @@ export class FavaInterfaceService {
 
 
     protected async restartFavaServer(): Promise<void> {
+        console.info('FavaInterfaceService - restartingFavaServer');
+
         // kill current fava process if currently running
         if(this.favaProcessManagerId){
             this.vesProcessService.killProcess(this.favaProcessManagerId)
@@ -40,12 +42,14 @@ export class FavaInterfaceService {
     }
 
     public async startFavaServer(): Promise<void> {
-        console.info('fava widget - start fava server');
+        console.info('FavaInterfaceService - starting fava server...');
 
         let favaProcessCommand = 'fava';
         let favaProcessArgs = ['-p', this.favaPort.toString()];
         for (var i = 0; i < this.favaFileURIs.length; i++) {
-            favaProcessArgs.push(this.favaFileURIs[i].path.fsPath());
+            const favaFileFSPath = this.favaFileURIs[i].path.fsPath();
+            favaProcessArgs.push(favaFileFSPath);
+            console.info('FavaInterfaceService - filearg: ' + favaFileFSPath);
         }
 
         const { processManagerId, processId } = 
@@ -58,7 +62,7 @@ export class FavaInterfaceService {
 
         this.favaProcessManagerId = processManagerId;
         this.favaProcessId = processId
-        console.info('fava process started wtih pid ' + processId);
+        console.info('FavaInterfaceService - fava started with pid ' + processId);
         return Promise.resolve();
     }
 
@@ -72,7 +76,7 @@ export class FavaInterfaceService {
                     return Promise.resolve([favaURI, restartFavaWaitTime]);
                 }
                 catch(error) {
-                    return Promise.reject(Error('fava sync & restart error: ' + error.Message));
+                    return Promise.reject(Error('FavaInterfaceService - fava sync & restart error: ' + error.Message));
                 }
 
             });
@@ -91,7 +95,7 @@ export class FavaInterfaceService {
             try {
                 let fileBasename: string = fileURI.path.base;
                 fileBasename = fileBasename.toLowerCase().replaceAll(' ', '-');
-                console.info("fava uri basename: " + fileBasename);
+                console.info("FavaInterfaceService - fava uri basename: " + fileBasename);
 
                 let fileExt: string = fileURI.path.ext.toLowerCase();
 
@@ -149,18 +153,18 @@ export class FavaInterfaceService {
     protected bindEvents(): void {
 
         this.vesProcessWatcher.onDidExitProcess(({ pId, event }) => {
-            console.info('process exited' + pId)
+            console.info('FavaInterfaceService - process exited' + pId)
 
         });
 
         this.vesProcessWatcher.onDidReceiveOutputStreamData(({ pId, data }) => {
-            console.info('fava stream data receive' + pId)
-            console.log('fava stream data: ', pId, data);
+            console.info('FavaInterfaceService - fava stream data receive' + pId)
+            console.log('FavaInterfaceService - fava stream data: ', pId, data);
         });
 
         this.vesProcessWatcher.onDidReceiveErrorStreamData(({ pId, data }) => {
-            console.info('fava stream error data receive' + pId)
-            console.log('fava error data: ', pId, data);
+            console.info('FavaInterfaceService - fava stream error data receive' + pId)
+            console.log('FavaInterfaceService - fava error data: ', pId, data);
         });
 
     }
