@@ -48,12 +48,17 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
             What is Beancolage?
         </h3>
         <div >
-            Beancolage is a packaged environment of <ExternalBrowserLink text="plaintext accounting" url="https://plaintextaccounting.org/"
+            Beancolage is a packaged environment of
+            <ExternalBrowserLink text=" plaintext accounting " url="https://plaintextaccounting.org/"
                 windowService={windowService} ></ExternalBrowserLink>
-            tools, centered around <ExternalBrowserLink text="Beancount" url="https://beancount.github.io/"
-                windowService={windowService} ></ExternalBrowserLink> and <ExternalBrowserLink text="Fava" url="https://beancount.github.io/fava/index.html"
-                windowService={windowService} ></ExternalBrowserLink>. The hope is to make the plaintext accounting experience 
-                accessible beyond just those with deep technical expertise, potentially to assist in group/organization bookkeeping.
+            tools, centered around
+            <ExternalBrowserLink text=" Beancount " url="https://beancount.github.io/"
+                windowService={windowService} ></ExternalBrowserLink>
+            and
+            <ExternalBrowserLink text=" Fava" url="https://beancount.github.io/fava/index.html"
+                windowService={windowService} ></ExternalBrowserLink>
+            . The hope is to make the plaintext accounting experience more
+            accessible, potentially to assist in group/organization bookkeeping.
         </div>
     </div>;
 }
@@ -64,13 +69,18 @@ export function renderWhatIsNot(windowService: WindowService): React.ReactNode {
             What is it not?
         </h3>
         <div >
-            Beancolage is intended to be a <ExternalBrowserLink text="bricolage" url="https://en.wikipedia.org/wiki/Bricolage"
-                windowService={windowService} ></ExternalBrowserLink> and not intended to be a fully-integrated accounting tool.
-
-            Notably, Beancolage doesn't try to support import workflows of a plaintext accounting system yet. 
-            Generally importers in the plaintext accounting space have been a challenge to collaboratively develop on 
-            - for now you might want to check Beancount's <ExternalBrowserLink text="external contribution" url="https://beancount.github.io/docs/external_contributions.html"
-                windowService={windowService} ></ExternalBrowserLink> guides on importing, such as <ExternalBrowserLink text="The Five Minute Ledger Update" url="https://reds-rants.netlify.app/personal-finance/the-five-minute-ledger-update/"
+            Beancolage is intended to be a
+            <i><ExternalBrowserLink text=" bricolage " url="https://en.wikipedia.org/wiki/Bricolage"
+                windowService={windowService} ></ExternalBrowserLink></i>
+            and not intended to be a fully-integrated accounting tool.
+            Notably, Beancolage doesn't try to support import workflows
+            of a plaintext accounting system yet. Generally importers in the
+            plaintext accounting space have been a challenge to collaboratively
+            develop on - for now you might want to check Beancount's
+            <ExternalBrowserLink text=" external contribution " url="https://beancount.github.io/docs/external_contributions.html"
+                windowService={windowService} ></ExternalBrowserLink>
+            guides on importing, such as
+            <ExternalBrowserLink text=" The Five Minute Ledger Update" url="https://reds-rants.netlify.app/personal-finance/the-five-minute-ledger-update/"
                 windowService={windowService} ></ExternalBrowserLink>.
 
         </div>
@@ -87,8 +97,10 @@ export function renderTickets(windowService: WindowService): React.ReactNode {
             Reporting feature requests and bugs
         </h3>
         <div >
-            For feature requests & bugs in Beancolage please consider opening an issue on <ExternalBrowserLink text="Github project" url="https://github.com/seltzered/beancount/issues/new/choose"
-                windowService={windowService} ></ExternalBrowserLink>. PR's Welcome 😉.
+            For feature requests & bugs in Beancolage please consider opening an issue on the
+            <ExternalBrowserLink text=" Github project" url="https://github.com/seltzered/beancolage/issues/new/choose"
+                windowService={windowService} ></ExternalBrowserLink>
+            . PR's Welcome 😉.
         </div>
     </div>;
 }

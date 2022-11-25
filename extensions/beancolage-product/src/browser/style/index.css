@@ -17,9 +17,16 @@
 /* NOTE: the '!important' var settings are a workround until
    https://github.com/eclipse-theia/theia/issues/8060 is implemented */
 :root {
-    --theia-branding-logo: url(../icons/TheiaBlueprintLogo-blue.png);
-    --theia-statusBar-background: #005d37 !important;
+    --theia-branding-logo: url(../icons/beancolage-logo-dist-alpha.svg);
+    --beancolage-green: #005d37;
+    --theia-statusBar-background: var(--beancolage-green) !important;
     --theia-statusBar-noFolderBackground: #00b56b !important;
+}
+
+.gs-beancolage-green-header {
+    color: var(--beancolage-green);
+    text-transform: capitalize;
+    font-weight: 600;
 }
 
 .gs-blue-header {
@@ -45,8 +52,8 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    width: 250px;
-    height: 118px;
+    width: 120px;
+    height: 120px;
     padding: 20px;
 }
 
@@ -55,6 +62,11 @@
     align-items: center;
     display: flex;
 }
+
+.gs-actions-container {
+    padding-left: 20px;
+}
+
 
 .ad-logo {
     background-image: var(--theia-branding-logo);

@@ -22,6 +22,8 @@ import { VSXEnvironment } from '@theia/vsx-registry/lib/common/vsx-environment';
 import { WindowService } from '@theia/core/lib/browser/window/window-service';
 import { Message, PreferenceService } from '@theia/core/lib/browser';
 import { BlueprintPreferences } from './theia-blueprint-preferences';
+import { codicon } from '@theia/core/lib/browser';
+import { nls } from '@theia/core/lib/common/nls';
 
 @injectable()
 export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
@@ -55,13 +57,11 @@ export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
 
     protected render(): React.ReactNode {
         return <div className='gs-container'>
-            <div className='gs-float'>
-                <div className='gs-logo'>
-                </div>
-                {this.renderActions()}
-            </div>
             {this.renderHeader()}
             <hr className='gs-hr' />
+            <div className='gs-float'>                
+                {this.renderActions()}
+            </div>
             <div className='flex-grid'>
                 <div className='col'>
                     {renderWhatIs(this.windowService)}
@@ -106,7 +106,7 @@ export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
     }
 
     protected renderActions(): React.ReactNode {
-        return <div className='gs-container'>
+        return <div className='gs-actions-container'>
             <div className='flex-grid'>
                 <div className='col'>
                     {this.renderOpen()}
@@ -132,7 +132,7 @@ export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
 
     protected renderHeader(): React.ReactNode {
         return <div className='gs-header'>
-            <h1>Eclipse Theia <span className='gs-blue-header'>Blueprint</span></h1>
+            <h1>Welcome to <span className='gs-beancolage-green-header'>Beancolage</span></h1>
             {this.renderVersion()}
         </div>;
     }
@@ -151,6 +151,36 @@ export class TheiaBlueprintGettingStartedWidget extends GettingStartedWidget {
 
     protected renderPreferences(): React.ReactNode {
         return <GSPreferences preferenceService={this.preferenceService}></GSPreferences>;
+    }
+
+    /**
+     * Render the help section.
+     */
+    protected renderHelp(): React.ReactNode {
+        return <div className='gs-section'>
+            <h3 className='gs-section-header'>
+                <i className={codicon('question')}></i>
+                {nls.localizeByDefault('Help')}
+            </h3>
+            <div className='gs-action-container'>
+                <a
+                    role={'button'}
+                    tabIndex={0}
+                    onClick={() => this.doOpenExternalLink(this.documentationUrl)}
+                    onKeyDown={(e: React.KeyboardEvent) => this.doOpenExternalLinkEnter(e, 'https://beancount.github.io/')}>
+                    {nls.localizeByDefault('Beancount Documentation')}
+                </a>
+            </div>
+            <div className='gs-action-container'>
+                <a
+                    role={'button'}
+                    tabIndex={0}
+                    onClick={() => this.doOpenExternalLink(this.documentationUrl)}
+                    onKeyDown={(e: React.KeyboardEvent) => this.doOpenExternalLinkEnter(e, 'https://beancount.github.io/fava/index.html')}>
+                    {nls.localizeByDefault('Fava Documentation')}
+                </a>
+            </div>
+        </div>;
     }
 }
 
