@@ -1,6 +1,6 @@
 # Beancolage
 
-TODO: Image
+[beancolage-demo-short-scaled.webm](https://user-images.githubusercontent.com/297435/204071147-ecd652d2-0b46-4aa7-aa16-272b4383a135.webm)
 
 This is an ongoing prototype of a plaintext accounting environment based on Eclipse Theia and including Beancount, VSCode-Beancount, and Fava.
 
