@@ -8,7 +8,7 @@ This is an ongoing prototype of a plaintext accounting environment based on Ecli
 
 ## Motivation & Limitations
 
-TODO: Image
+![Screenshot from 2022-11-25 23-23-07](https://user-images.githubusercontent.com/297435/204073620-87b01a4b-58d1-4a12-999f-d74f322a7179.png)
 
 The aspiration of Beancolage is to provide a more 'download and try' experience for [plaintext accounting](https://plaintextaccounting.org/), centered around [Beancount](https://beancount.github.io/) and [Fava](https://beancount.github.io/fava/index.html). The hope is to make the plaintext accounting experience accessible beyond just those with deep technical expertise, potentially to assist in group/organization bookkeeping. This said, Beancolage is intended to be a [_bricolage_](https://en.wikipedia.org/wiki/Bricolage) and not intended to be a fully-integrated accounting tool.
 
