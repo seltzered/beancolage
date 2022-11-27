@@ -39,12 +39,13 @@ Future releases of Beancolage plan to include:
 This repository is inspired by [Theia-Blueprint](https://github.com/eclipse-theia/theia-blueprint) with various UI extensions.
 
 - Root level configures mono-repo build with lerna
-- `applications` groups the different app targets
+- `applications` groups the different app targets:
   - `electron` contains app to package, packaging configuration, and E2E tests for the electron target.
-- `beancolage-extension` groups the various extensions, within `src` there is:
-  - `navigator-fava` - A navigation panel for opening beancount files in Fava, and to see open Fava views (based on [open-editors-widget](https://github.com/eclipse-theia/theia/pull/9284/commits/a0472f6186d5d26a5b54f9b8c7ab7697c2d83f42)) 
+- `extensions/beancolage-extension` groups the various extensions, within `src` there is:
+  - `navigator-fava` - A navigation panel for opening beancount files in Fava, and to see open Fava views (based on [open-editors-widget](https://github.com/eclipse-theia/theia/pull/9284/commits/a0472f6186d5d26a5b54f9b8c7ab7697c2d83f42)).
   - `fava-interface` - manages Fava server, notably adding in file arguments.
-  - `process` - copy of [ves-process](https://github.com/VUEngine/VUEngine-Studio/tree/master/extensions/vuengine-studio-extension/src/process) from [VUEngine Studio](https://github.com/VUEngine/VUEngine-Studio)
+  - `process` - copy of [ves-process](https://github.com/VUEngine/VUEngine-Studio/tree/master/extensions/vuengine-studio-extension/src/process) from [VUEngine Studio](https://github.com/VUEngine/VUEngine-Studio).
+- `extensions/beancolage-product` is based on [theia-blueprint-product](https://github.com/eclipse-theia/theia-blueprint/tree/master/theia-extensions/theia-blueprint-product) and handles application-wide customizations (getting started page, help, default workbench layout, colors, etc.).
 
 
 ## Getting Started
