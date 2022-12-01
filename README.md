@@ -1,4 +1,4 @@
-# Beancolage, a plaintext accounting environment
+# Beancolage, a plaintext accounting environment bundling Beancount-based tools
 
 ![beancolage-demo-short-scaled-slowed](https://user-images.githubusercontent.com/297435/204071516-1908c7ed-ac3e-4dc4-8817-1b62c219120f.gif)
 
