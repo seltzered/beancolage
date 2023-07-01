@@ -129,7 +129,8 @@
   },
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
-    "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix"
+    "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix",
+    "markdown-basics": "https://open-vsx.org/api/vscode/markdown/1.77.0/file/vscode.markdown-1.77.0.vsix"
   },
   "theiaPluginsExcludeIds": [
     "ms-vscode.js-debug-companion",
