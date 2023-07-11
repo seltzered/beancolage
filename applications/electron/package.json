@@ -130,7 +130,9 @@
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
     "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix",
-    "markdown-basics": "https://open-vsx.org/api/vscode/markdown/1.77.0/file/vscode.markdown-1.77.0.vsix"
+    "markdown-basics": "https://open-vsx.org/api/vscode/markdown/1.77.0/file/vscode.markdown-1.77.0.vsix",
+    "rainbow-csv": "https://open-vsx.org/api/mechatroner/rainbow-csv/3.3.0/file/mechatroner.rainbow-csv-3.3.0.vsix",
+    "python": "https://open-vsx.org/api/vscode/python/1.77.0/file/vscode.python-1.77.0.vsix"
   },
   "theiaPluginsExcludeIds": [
     "ms-vscode.js-debug-companion",
