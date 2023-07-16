@@ -39,7 +39,6 @@ import {
 import {
     Command,
     CommandRegistry,
-    DisposableCollection,
     isOSX,
     MenuModelRegistry,
     MenuPath,
@@ -256,19 +255,7 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         }
     }
 
-
     async onStart(app: FrontendApplication): Promise<void> {
-        console.info('fava navigator onStart');
-        //TODO: seed preferences so fava navigator starts on first launch of beancolage
-        this.workspacePreferences.ready.then(() => {
-            this.updateAddRemoveFolderActions(this.menuRegistry);
-            this.workspacePreferences.onPreferenceChanged(change => {
-                if (change.preferenceName === 'workspace.supportMultiRootWorkspace') {
-                    this.updateAddRemoveFolderActions(this.menuRegistry);
-                }
-            });
-        });
-
         app.shell.onDidAddWidget(widget => {
             console.info('fava widget onDidAddWidget');
         });
@@ -470,6 +457,13 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
         registry.registerMenuAction(NavigatorContextMenu.CLIPBOARD, {
             commandId: CommonCommands.COPY_PATH.id,
             order: 'c'
+        });
+        registry.registerMenuAction(NavigatorContextMenu.WORKSPACE, {
+            commandId: NavigatorFavaCommands.ADD_ROOT_FOLDER.id,
+            label: WorkspaceCommands.ADD_FOLDER.label
+        });
+        registry.registerMenuAction(NavigatorContextMenu.WORKSPACE, {
+            commandId: WorkspaceCommands.REMOVE_FOLDER.id
         });
         registry.registerMenuAction(NavigatorContextMenu.CLIPBOARD, {
             commandId: WorkspaceCommands.COPY_RELATIVE_FILE_PATH.id,
@@ -705,20 +699,6 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
     async refreshWorkspace(): Promise<void> {
         const { model } = await this.widget;
         await model.refresh();
-    }
-
-    private readonly toDisposeAddRemoveFolderActions = new DisposableCollection();
-    private updateAddRemoveFolderActions(registry: MenuModelRegistry): void {
-        this.toDisposeAddRemoveFolderActions.dispose();
-        if (this.workspacePreferences['workspace.supportMultiRootWorkspace']) {
-            this.toDisposeAddRemoveFolderActions.push(registry.registerMenuAction(NavigatorContextMenu.WORKSPACE, {
-                commandId: NavigatorFavaCommands.ADD_ROOT_FOLDER.id,
-                label: WorkspaceCommands.ADD_FOLDER.label!
-            }));
-            this.toDisposeAddRemoveFolderActions.push(registry.registerMenuAction(NavigatorContextMenu.WORKSPACE, {
-                commandId: WorkspaceCommands.REMOVE_FOLDER.id
-            }));
-        }
     }
 
 }
