@@ -25,7 +25,7 @@ export interface VesProcessService
   extends JsonRpcServer<VesProcessServiceClient> {
   launchProcess(type: VesProcessType, options: ProcessOptions): Promise<{
     processManagerId: number;
-    processId: number;
+    managedProcessId: number;
   }>;
   killProcess(processManagerId: number): boolean;
 }

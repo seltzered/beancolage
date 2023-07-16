@@ -52,7 +52,7 @@ export class FavaInterfaceService {
             console.info('FavaInterfaceService - filearg: ' + favaFileFSPath);
         }
 
-        const { processManagerId, processId } = 
+        const { processManagerId, managedProcessId } = 
             await this.vesProcessService.launchProcess(
                 VesProcessType.Terminal, {
                     command: favaProcessCommand,
@@ -61,8 +61,8 @@ export class FavaInterfaceService {
             );
 
         this.favaProcessManagerId = processManagerId;
-        this.favaProcessId = processId
-        console.info('FavaInterfaceService - fava started with pid ' + processId);
+        this.favaProcessId = managedProcessId
+        console.info('FavaInterfaceService - fava started with mpid ' + managedProcessId);
         return Promise.resolve();
     }
 

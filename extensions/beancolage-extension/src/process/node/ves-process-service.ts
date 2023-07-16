@@ -1,4 +1,3 @@
-import { isWindows } from '@theia/core';
 import { inject, injectable } from '@theia/core/shared/inversify';
 import {
   IProcessExitEvent,
@@ -30,7 +29,7 @@ export class VesProcessServiceImpl implements VesProcessService {
 
   async launchProcess(type: VesProcessType, options: ProcessOptions | TerminalProcessOptions): Promise<{
     processManagerId: number;
-    processId: number;
+    managedProcessId: number;
   }> {
     const newProcess = type === VesProcessType.Terminal
       ? this.terminalProcessFactory(options)
@@ -62,21 +61,21 @@ export class VesProcessServiceImpl implements VesProcessService {
       this.client?.onDidReceiveErrorStreamData(processManagerId, chunk.toString());
     });
 
-    const process = this.processManager.get(processManagerId);
+    const managedProcess = this.processManager.get(processManagerId);
 
     return {
       processManagerId: processManagerId,
-      processId: process?.pid || -1,
+      managedProcessId: managedProcess?.id || -1,
     };
   }
 
   killProcess(processManagerId: number): boolean {
-    const process = this.processManager.get(processManagerId);
-    if (!process) {
+    const managedProcess = this.processManager.get(processManagerId);
+    if (!managedProcess) {
       return false;
     }
 
-    process.kill(isWindows ? 'SIGINT' : 'SIGTERM');
+    managedProcess.kill();
     return true;
   }
 }
