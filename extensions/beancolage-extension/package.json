@@ -9,8 +9,8 @@
     "src"
   ],
   "dependencies": {
-    "@theia/core": "1.35.0",
-    "@theia/mini-browser": "1.35.0"
+    "@theia/core": "1.39.0",
+    "@theia/mini-browser": "1.39.0"
   },
   "devDependencies": {
     "rimraf": "latest",
