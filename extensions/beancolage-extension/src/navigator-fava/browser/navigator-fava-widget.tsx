@@ -3,17 +3,13 @@ import {
 } from '@theia/core/lib/browser';
 
 import { injectable, inject, postConstruct } from '@theia/core/shared/inversify';
-import URI from '@theia/core/lib/common/uri';
 
-import { SelectableTreeNode, ContextMenuRenderer, TreeProps, TreeNode } from '@theia/core/lib/browser';
-
-import { FileNode } from '@theia/filesystem/lib/browser';
+import { ContextMenuRenderer, TreeProps, TreeNode } from '@theia/core/lib/browser';
 
 import { FileNavigatorFavaModel } from './navigator-fava-model';
 import { FileTreeWidget } from '@theia/filesystem/lib/browser';
 import { FileNavigatorWidget } from '@theia/navigator/lib/browser/navigator-widget';
 
-import { NavigatorFavaCommands } from './navigator-fava-contribution';
 import { nls } from '@theia/core/lib/common/nls';
 
 export const FAVA_NAVIGATOR_ID = 'favas';
@@ -41,37 +37,6 @@ export class NavigatorFavaWidget extends FileNavigatorWidget {
     @postConstruct()
     protected override init(): void {
         super.init();
-    }
-
-
-    protected override enableDndOnMainPanel(): void {
-        const mainPanelNode = this.shell.mainPanel.node;
-        this.addEventListener(mainPanelNode, 'drop', async ({ dataTransfer }) => {
-            const treeNodes = dataTransfer && this.getSelectedTreeNodesFromData(dataTransfer) || [];
-            if (treeNodes.length > 0) {
-                treeNodes.filter(FileNode.is).forEach(treeNode => {
-                    if (!SelectableTreeNode.isSelected(treeNode)) {
-                        this.model.toggleNode(treeNode);
-                    }
-                });
-                this.commandService.executeCommand(NavigatorFavaCommands.OPEN.id);
-            } else if (dataTransfer && dataTransfer.files?.length > 0) {
-                // the files were dragged from the outside the workspace
-                Array.from(dataTransfer.files).forEach(async file => {
-                    const fileUri = new URI(file.path);
-                    const opener = await this.openerService.getOpener(fileUri);
-                    opener.open(fileUri);
-                });
-            }
-        });
-        const handler = (e: DragEvent) => {
-            if (e.dataTransfer) {
-                e.dataTransfer.dropEffect = 'link';
-                e.preventDefault();
-            }
-        };
-        this.addEventListener(mainPanelNode, 'dragover', handler);
-        this.addEventListener(mainPanelNode, 'dragenter', handler);
     }
 
     protected override tapNode(node?: TreeNode): void {
