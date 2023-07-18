@@ -33,7 +33,7 @@
     "yargs": "17.2.1"
   },
   "scripts": {
-    "prepare": "lerna run prepare",
+    "prepare": "lerna run prepare --concurrency 1",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
     "clean": "lerna run clean && rimraf node_modules",
@@ -49,9 +49,9 @@
     "extensions/*"
   ],
   "resolutions": {
-     "@yarnpkg/parsers": "3.0.0-rc.44",
-     "@types/puppeteer": "^5.4.0",
-     "**/msgpackr": "1.8.3",
-     "**/multer": "1.4.4-lts.1"
+    "@types/puppeteer": "^5.4.0",
+    "@yarnpkg/parsers": "3.0.0-rc.44",
+    "**/msgpackr": "1.8.3",
+    "**/multer": "1.4.4-lts.1"
   }
 }

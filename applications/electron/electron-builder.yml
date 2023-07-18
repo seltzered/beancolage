@@ -8,6 +8,8 @@ electronVersion: 23.3.9
 # because binaries can not be executed from the asar archive.
 # See asar file API limitations: https://www.electronjs.org/docs/tutorial/application-packaging#limitations-of-the-node-api
 asar: false
+nodeGypRebuild: false
+npmRebuild: false
 
 directories:
   buildResources: resources
