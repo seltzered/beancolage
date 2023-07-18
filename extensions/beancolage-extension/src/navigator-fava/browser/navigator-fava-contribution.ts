@@ -220,7 +220,11 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
     }
 
     @postConstruct()
-    protected async init(): Promise<void> {
+    protected init(): void {
+        this.doInit();
+    }
+    
+    protected async doInit(): Promise<void> {
         await this.favaNavigatorPreferences.ready;
         this.shell.onDidChangeCurrentWidget(() => this.onCurrentWidgetChangedHandler());
 
