@@ -2766,6 +2766,13 @@
     "@vscode/ripgrep" "^1.14.2"
     minimatch "^5.1.0"
 
+"@theia/secondary-window@1.39.0":
+  version "1.39.0"
+  resolved "https://registry.yarnpkg.com/@theia/secondary-window/-/secondary-window-1.39.0.tgz#084d5e06c995f2a2c9545b5d2cb9368ca5269278"
+  integrity sha512-+D192n2tHcKpMMpR1TqbE8QmHLvaWTEqPwiqKnc9cJsHPz5ddycA9FqE24uaPrl56VCdko/rdY24WtjxIWWWFA==
+  dependencies:
+    "@theia/core" "1.39.0"
+
 "@theia/task@1.39.0":
   version "1.39.0"
   resolved "https://registry.yarnpkg.com/@theia/task/-/task-1.39.0.tgz#4f1bef9ea2337c9aa89c9f001c15ff5afb7153ab"
