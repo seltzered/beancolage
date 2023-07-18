@@ -117,6 +117,8 @@ yarn electron package
 
 The packaged application is located in `applications/electron/dist`.
 
+NOTE: In practice I have found myself running `npx theia rebuild:electron` followed by `yarn electron package` , likely due to [electron-rebuild issues](https://github.com/eclipse-theia/theia/pull/10429) that result in `Error: Module did not self-register:[...]drivelist.node` errors
+
 ### Create a Preview Electron Application (without packaging it)
 
 ```sh
