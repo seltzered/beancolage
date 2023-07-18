@@ -1,0 +1,44 @@
+name: Publish Beancolage Docker Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The image's tag
+        required: true
+        default: next
+
+jobs:
+  build:
+    name: Build and push Beancolage image to Docker Hub
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Log in to the Github Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: browser.Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/beancolage:${{ github.event.inputs.tag }}
+            ghcr.io/${{ github.repository }}/beancolage:latest
+# Add below after repository was created
+            # eclipsetheia/beancolage:${{ github.event.inputs.tag }}
+            # eclipsetheia/beancolage:latest

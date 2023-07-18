@@ -40,6 +40,7 @@ This repository is inspired by [Theia-Blueprint](https://github.com/eclipse-thei
 
 - Root level configures mono-repo build with lerna
 - `applications` groups the different app targets:
+  - `browser` contains a browser based version of Beancolage that may be packaged as a Docker image
   - `electron` contains app to package, packaging configuration, and E2E tests for the electron target.
 - `extensions/beancolage-extension` groups the various extensions, within `src` there is:
   - `navigator-fava` - A navigation panel for opening beancount files in Fava, and to see open Fava views (based on [open-editors-widget](https://github.com/eclipse-theia/theia/pull/9284/commits/a0472f6186d5d26a5b54f9b8c7ab7697c2d83f42)).
@@ -108,7 +109,7 @@ yarn prepare
 yarn
 ```
 
-### Package the Application
+### Package the Electron Application
 
 ```sh
 yarn electron package
@@ -116,7 +117,7 @@ yarn electron package
 
 The packaged application is located in `applications/electron/dist`.
 
-### Create a Preview Application (without packaging it)
+### Create a Preview Electron Application (without packaging it)
 
 ```sh
 yarn electron package:preview
@@ -124,7 +125,7 @@ yarn electron package:preview
 
 The packaged application is located in `applications/electron/dist`.
 
-### Running E2E Tests
+### Running E2E Tests on Electron
 
 The E2E tests basic UI tests of the actual application.
 This is done based on the preview of the packaged application.
@@ -134,9 +135,41 @@ yarn electron package:preview
 yarn electron test
 ```
 
+### Running Browser app
+
+The browser app may be started with
+
+```sh
+# Download Plugins for browser app
+yarn browser download:plugins
+
+# Start browser app
+yarn browser start
+```
+
+and connect to <http://localhost:3000/>
+
 ### Troubleshooting
 TODO
 
 ### Reporting Feature Requests and Bugs
-TODO
 
+Many features in Beancolage are based on Theia and the included extensions/plugins. For bugs in Theia please consider opening an issue in the [Theia project on Github](https://github.com/eclipse-theia/theia/issues/new/choose).
+
+If something isn't working properly, please [open an issue on Github](https://github.com/seltzered/beancolage/issues/new/choose) to let us know.
+
+### Docker Build
+
+You can create a Docker Image for Beancolage based on the browser app with the following build command:
+
+```sh
+docker build -t beancolage -f browser.Dockerfile .
+```
+
+You may then run this with
+
+```sh
+docker run -p=3000:3000 --rm beancolage
+```
+
+and connect to <http://localhost:3000/>
