@@ -96,7 +96,7 @@
     "build": "yarn -s compile && yarn -s bundle",
     "bundle": "yarn -s rebuild && theia build",
     "compile": "tsc -b",
-    "rebuild": "theia rebuild:browser --cacheRoot ../..",
+    "rebuild": "theia rebuild:browser --cacheRoot .",
     "start": "theia start --plugins=local-dir:./plugins",
     "watch": "concurrently --kill-others -n tsc,bundle -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\"",
     "download:plugins": "theia download:plugins --rate-limit=15",

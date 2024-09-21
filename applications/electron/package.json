@@ -119,7 +119,7 @@
     "clean:dist": "rimraf dist",
     "build": "yarn -s bundle",
     "bundle": "yarn -s rebuild && theia build",
-    "rebuild": "theia rebuild:electron",
+    "rebuild": "theia rebuild:electron --cacheRoot .",
     "watch": "concurrently -n compile,bundle \"theiaext watch --preserveWatchOutput\" \"theia build --watch --mode development\"",
     "start": "electron scripts/beancolage-electron-main.js",
     "start:debug": "yarn start --log-level=debug",
