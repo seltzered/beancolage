@@ -1,0 +1,22 @@
+{
+  "extends": "./configs/base.tsconfig.json",
+  "include": [],
+  "compilerOptions": {
+    "composite": true,
+    "allowJs": true
+  },
+  "references": [
+    {
+      "path": "extensions/beancolage-extensions-ext"
+    },
+    {
+      "path": "extensions/beancolage-product-ext"
+    },
+    {
+      "path": "applications/electron"
+    },
+    {
+      "path": "applications/browser"
+    },
+  ]
+}

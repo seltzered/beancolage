@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "beancolage-browser",
+  "name": "beancolage-browser-app",
   "description": "Beancolage browser",
   "productName": "Beancolage",
   "version": "0.0.1",
@@ -84,38 +84,20 @@
     "@theia/vsx-registry": "1.40.0",
     "@theia/workspace": "1.40.0",
     "fs-extra": "^9.0.1",
-    "beancolage-extension": "0.0.0",
-    "beancolage-product": "0.0.0"
+    "beancolage-extensions-ext": "0.0.0",
+    "beancolage-product-ext": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "1.40.0"
   },
   "scripts": {
-    "prepare": "yarn build",
     "clean": "theia clean && rimraf node_modules",
-    "build": "yarn -s compile && yarn -s bundle",
-    "bundle": "yarn -s rebuild && theia build",
-    "compile": "tsc -b",
+    "build": "yarn -s rebuild && theia build --app-target=\"browser\" --mode development",
+    "build:prod": "theia  build --app-target=\"browser\"",
     "rebuild": "theia rebuild:browser --cacheRoot .",
-    "start": "theia start --plugins=local-dir:./plugins",
-    "watch": "concurrently --kill-others -n tsc,bundle -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\"",
-    "download:plugins": "theia download:plugins --rate-limit=15",
-    "update:next": "ts-node ../../scripts/update-theia-to-next.ts"
-  },
-  "theiaPluginsDir": "plugins",
-  "theiaPlugins": {
-    "vscode-beancount": "https://open-vsx.org/api/Lencerf/beancount/0.9.0/file/Lencerf.beancount-0.9.0.vsix",
-    "markdown-basics": "https://open-vsx.org/api/vscode/markdown/1.77.0/file/vscode.markdown-1.77.0.vsix",
-    "rainbow-csv": "https://open-vsx.org/api/mechatroner/rainbow-csv/3.3.0/file/mechatroner.rainbow-csv-3.3.0.vsix",
-    "python": "https://open-vsx.org/api/vscode/python/1.77.0/file/vscode.python-1.77.0.vsix"
-  },
-  "theiaPluginsExcludeIds": [
-    "ms-vscode.js-debug-companion",
-    "vscode.extension-editing",
-    "vscode.git",
-    "vscode.git-ui",
-    "vscode.github",
-    "vscode.github-authentication",
-    "vscode.microsoft-authentication"
-  ]
+    "start": "theia start --plugins=local-dir:../../plugins",
+    "watch": "concurrently --kill-others -n tsc,build -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\"",
+    "update:theia": "ts-node ../../scripts/update-theia-version.ts",
+    "update:next": "ts-node ../../scripts/update-theia-version.ts next"
+  }
 }

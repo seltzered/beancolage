@@ -2,16 +2,9 @@
  * Copyright (C) 2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
- * terms of the Eclipse Public License v. 2.0 which is available at
- * http://www.eclipse.org/legal/epl-2.0.
+ * terms of the MIT License, which is available in the project root.
  *
- * This Source Code may also be made available under the following Secondary
- * Licenses when the conditions for such availability set forth in the Eclipse
- * Public License v. 2.0 are satisfied: GNU General Public License, version 2
- * with the GNU Classpath Exception which is available at
- * https://www.gnu.org/software/classpath/license.html.
- *
- * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ * SPDX-License-Identifier: MIT
  ********************************************************************************/
 import * as crypto from 'crypto';
 import * as fs from 'fs';
@@ -20,11 +13,10 @@ import * as path from 'path';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 
-
 const argv = yargs(hideBin(process.argv))
-    .option('executable', { alias: 'e', type: 'string', default: 'Beancolage.AppImage', desription: 'The executable for which the checksum needs to be updated' })
-    .option('yaml', { alias: 'y', type: 'string', default: 'latest-linux.yml', desription: 'The yaml file where the checksum needs to be updated' })
-    .option('platform', { alias: 'p', type: 'string', default: 'linux', desription: 'The OS platform' })
+    .option('executable', { alias: 'e', type: 'string', default: 'TheiaIDE.AppImage', description: 'The executable for which the checksum needs to be updated' })
+    .option('yaml', { alias: 'y', type: 'string', default: 'latest-linux.yml', description: 'The yaml file where the checksum needs to be updated' })
+    .option('platform', { alias: 'p', type: 'string', default: 'linux', description: 'The OS platform' })
     .version(false)
     .wrap(120)
     .parseSync();
@@ -48,22 +40,23 @@ async function execute(): Promise<void> {
         yaml
     );
 
-    console.log('Exe: ' + executablePath + '; Yaml: ' + yamlPath + '; Platform: ' + platform)
+    console.log('Exe: ' + executablePath + '; Yaml: ' + yamlPath + '; Platform: ' + platform);
 
     const hash = await hashFile(executablePath, 'sha512', 'base64', {});
-    const size = fs.statSync(executablePath).size
+    const size = fs.statSync(executablePath).size;
 
-    const yamlContents: string = fs.readFileSync(yamlPath, { encoding: 'utf8' })
+    const yamlContents: string = fs.readFileSync(yamlPath, { encoding: 'utf8' });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const latestYaml: any = jsyaml.safeLoad(yamlContents);
     latestYaml.sha512 = hash;
-    latestYaml.path = updatedPath(latestYaml.path, latestYaml.version, platform)
+    latestYaml.path = updatedPath(latestYaml.path, latestYaml.version, platform);
     for (const file of latestYaml.files) {
         file.sha512 = hash;
         file.size = size;
-        file.url = updatedPath(file.url, latestYaml.version, platform)
+        file.url = updatedPath(file.url, latestYaml.version, platform);
     }
 
-    //line width -1 to avoid adding >- on long strings like a hash
+    // line width -1 to avoid adding >- on long strings like a hash
     const newYamlContents = jsyaml.dump(latestYaml, { lineWidth: -1 });
     fs.writeFileSync(yamlPath, newYamlContents);
 }
@@ -78,6 +71,7 @@ function hashFile(file: fs.PathLike, algorithm = 'sha512', encoding: BufferEncod
     start?: number;
     end?: number;
     highWaterMark?: number;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 }): Promise<any> {
     return new Promise((resolve, reject) => {
         const hash = crypto.createHash(algorithm);
@@ -102,7 +96,7 @@ function hashFile(file: fs.PathLike, algorithm = 'sha512', encoding: BufferEncod
     });
 }
 
-function updatedPath(path: string, version: string, platform: string): string {
-    const extensionIndex = path.lastIndexOf('.');
-    return '../../' + version + '/' + platform + '/' + path.substring(0, extensionIndex) + '-' + version + path.substring(extensionIndex);
+function updatedPath(toUpdate: string, version: string, platform: string): string {
+    const extensionIndex = toUpdate.lastIndexOf('.');
+    return '../../' + version + '/' + platform + '/' + toUpdate.substring(0, extensionIndex) + '-' + version + toUpdate.substring(extensionIndex);
 }

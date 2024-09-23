@@ -36,17 +36,17 @@ Future releases of Beancolage plan to include:
 
 ## Repository Structure
 
-This repository is inspired by [Theia-Blueprint](https://github.com/eclipse-theia/theia-blueprint) with various UI extensions.
+This repository, including this readme, is heavily based on [Theia-IDE (fka Theia-Blueprint)](https://github.com/eclipse-theia/theia-blueprint) with various UI extensions.
 
 - Root level configures mono-repo build with lerna
 - `applications` groups the different app targets:
   - `browser` contains a browser based version of Beancolage that may be packaged as a Docker image
   - `electron` contains app to package, packaging configuration, and E2E tests for the electron target.
-- `extensions/beancolage-extension` groups the various extensions, within `src` there is:
+- `extensions/beancolage-extensions-ext` groups the various extensions, within `src` there is:
   - `navigator-fava` - A navigation panel for opening beancount files in Fava, and to see open Fava views (based on [open-editors-widget](https://github.com/eclipse-theia/theia/pull/9284/commits/a0472f6186d5d26a5b54f9b8c7ab7697c2d83f42)).
   - `fava-interface` - manages Fava server, notably adding in file arguments.
   - `process` - copy of [ves-process](https://github.com/VUEngine/VUEngine-Studio/tree/master/extensions/vuengine-studio-extension/src/process) from [VUEngine Studio](https://github.com/VUEngine/VUEngine-Studio).
-- `extensions/beancolage-product` is based on [theia-blueprint-product](https://github.com/eclipse-theia/theia-blueprint/tree/master/theia-extensions/theia-blueprint-product) and handles application-wide customizations (getting started page, help, default workbench layout, colors, etc.).
+- `extensions/beancolage-product-ext` is based on [theia-blueprint-product](https://github.com/eclipse-theia/theia-blueprint/tree/master/theia-extensions/theia-blueprint-product) and handles application-wide customizations (getting started page, help, default workbench layout, colors, etc.).
 
 
 ## Getting Started
@@ -109,9 +109,26 @@ yarn prepare
 yarn
 ```
 
+For development and casual testing, one can build it in "dev" mode:
+
+```sh
+# Build "dev" version of Beancolage. Its quicker, uses less resources, 
+# but the front end app is not "minified"
+yarn && yarn build:dev && yarn download:plugins
+```
+
+For production builds:
+
+```sh
+# Build production version Beancolage
+yarn && yarn build && yarn download:plugins
+```
+
 ### Package the Electron Application
 
 ```sh
+yarn package:applications
+# or
 yarn electron package
 ```
 
@@ -126,6 +143,7 @@ yarn electron package:preview
 ```
 
 The packaged application is located in `applications/electron/dist`.
+
 
 ### Running E2E Tests on Electron
 

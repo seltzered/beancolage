@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "beancolage-product",
+  "name": "beancolage-product-ext",
   "version": "0.0.0",
   "description": "Beancolage Product Branding",
   "dependencies": {
@@ -39,12 +39,12 @@
     "src"
   ],
   "scripts": {
-    "prepare": "yarn clean && yarn build",
     "clean": "rimraf lib *.tsbuildinfo",
     "build": "tsc -b",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "lint:fix": "eslint --ext js,jsx,ts,tsx src --fix",
-    "update:next": "ts-node ../../scripts/update-theia-to-next.ts"
+    "update:theia": "ts-node ../../scripts/update-theia-version.ts",
+    "update:next": "ts-node ../../scripts/update-theia-version.ts next"
   },
   "peerDependencies": {
     "react": "^16.8.0"
