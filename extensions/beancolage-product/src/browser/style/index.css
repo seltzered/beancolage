@@ -29,6 +29,13 @@
     font-weight: 600;
 }
 
+.theia-icon {
+    background-image: url("../icons/512-512.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .gs-blue-header {
     color: #5088e7;
     text-transform: capitalize;
@@ -55,12 +62,6 @@
     width: 120px;
     height: 120px;
     padding: 20px;
-}
-
-.gs-preference {
-    margin-top: 20px;
-    align-items: center;
-    display: flex;
 }
 
 .gs-actions-container {

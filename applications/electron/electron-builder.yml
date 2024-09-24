@@ -2,7 +2,7 @@ appId: com.beancolage
 productName: Beancolage
 copyright: TODO
 electronDist: ../../node_modules/electron/dist
-electronVersion: 23.3.11
+electronVersion: 23.3.13
 # Although it is generally not recommended to disable asar, it is required for Theia.
 # Enabling this leads to: process ERROR Error: spawn ENOTDIR
 # because binaries can not be executed from the asar archive.
@@ -66,7 +66,7 @@ nsis:
   uninstallerSidebar: resources/icons/InstallerSidebarImage/164-314Windows.bmp
   allowToChangeInstallationDirectory: true
   runAfterFinish: false
-  artifactName: ${productName}.${ext}
+  artifactName: ${productName}Setup.${ext}
   license: LICENSE
 dmg:
   artifactName: ${productName}.${ext}

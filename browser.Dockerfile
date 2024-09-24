@@ -12,6 +12,8 @@ COPY . .
 # Remove unnecesarry files for the browser application
 # Download plugins and build application production mode
 # Use yarn autoclean to remove unnecessary files from package dependencies
+# NOTE: Add `beancolage-extensions/launcher beancolage-extensions/updater` 
+#       to the rm list (last step here) if/when these are added 
 RUN yarn --pure-lockfile && \
     yarn build:extensions && \
     yarn browser download:plugins && \
@@ -22,7 +24,7 @@ RUN yarn --pure-lockfile && \
     echo *.spec.* >> .yarnclean && \
     yarn autoclean --force && \
     yarn cache clean && \
-    rm -rf .git applications/electron theia-extensions/beancolage-launcher theia-extensions/beancolage-updater node_modules
+    rm -r .git applications/electron node_modules
 
 # Production stage uses a small base image
 FROM node:16-bullseye-slim as production-stage

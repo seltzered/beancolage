@@ -16,7 +16,7 @@
 
 import '../../src/browser/style/index.css';
 
-import { FrontendApplicationContribution, FrontendApplication, WidgetFactory, bindViewContribution, PreferenceContribution } from '@theia/core/lib/browser';
+import { WidgetFactory } from '@theia/core/lib/browser';
 import { FrontendApplicationOverride } from './beancolage-frontend-application-override';
 import { AboutDialog } from '@theia/core/lib/browser/about-dialog';
 import { CommandContribution } from '@theia/core/lib/common/command';
@@ -25,16 +25,12 @@ import { GettingStartedWidget } from '@theia/getting-started/lib/browser/getting
 import { MenuContribution } from '@theia/core/lib/common/menu';
 import { TheiaBlueprintAboutDialog } from './theia-blueprint-about-dialog';
 import { TheiaBlueprintContribution } from './theia-blueprint-contribution';
-import { TheiaBlueprintGettingStartedContribution } from './theia-blueprint-getting-started-contribution';
 import { TheiaBlueprintGettingStartedWidget } from './theia-blueprint-getting-started-widget';
-import { theiaBlueprintPreferenceSchema } from './theia-blueprint-preferences';
 
 export default new ContainerModule((bind, _unbind, isBound, rebind) => {
     bind(FrontendApplicationOverride).toSelf().inSingletonScope();
     rebind(FrontendApplication).toService(FrontendApplicationOverride);
 
-    bindViewContribution(bind, TheiaBlueprintGettingStartedContribution);
-    bind(FrontendApplicationContribution).toService(TheiaBlueprintGettingStartedContribution);
     bind(TheiaBlueprintGettingStartedWidget).toSelf();
     bind(WidgetFactory).toDynamicValue(context => ({
         id: GettingStartedWidget.ID,
@@ -51,6 +47,5 @@ export default new ContainerModule((bind, _unbind, isBound, rebind) => {
         bind(serviceIdentifier).toService(TheiaBlueprintContribution)
     );
 
-    bind(PreferenceContribution).toConstantValue({ schema: theiaBlueprintPreferenceSchema });
 
 });
