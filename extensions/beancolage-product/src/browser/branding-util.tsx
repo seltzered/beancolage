@@ -14,7 +14,6 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import { Key, KeyCode } from '@theia/core/lib/browser';
 import { WindowService } from '@theia/core/lib/browser/window/window-service';
 import * as React from 'react';
 
@@ -24,22 +23,15 @@ export interface ExternalBrowserLinkProps {
     windowService: WindowService;
 }
 
-function ExternalBrowserLink(props: ExternalBrowserLinkProps): JSX.Element {
+function BrowserLink(props: ExternalBrowserLinkProps): JSX.Element {
     return <a
         role={'button'}
         tabIndex={0}
-        onClick={() => openExternalLink(props.url, props.windowService)}
-        onKeyDown={(e: React.KeyboardEvent) => {
-            if (Key.ENTER.keyCode === KeyCode.createKeyCode(e.nativeEvent).key?.keyCode) {
-                openExternalLink(props.url, props.windowService);
-            }
-        }}>
+        href={props.url}
+        target='_blank'
+        >
         {props.text}
     </a>;
-}
-
-function openExternalLink(url: string, windowService: WindowService): void {
-    windowService.openNewWindow(url, { external: true });
 }
 
 export function renderWhatIs(windowService: WindowService): React.ReactNode {
@@ -49,14 +41,14 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
         </h3>
         <div >
             Beancolage is a packaged environment of
-            <ExternalBrowserLink text=" plaintext accounting " url="https://plaintextaccounting.org/"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text=" plaintext accounting " url="https://plaintextaccounting.org/"
+                windowService={windowService} ></BrowserLink>
             tools, centered around
-            <ExternalBrowserLink text=" Beancount " url="https://beancount.github.io/"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text=" Beancount " url="https://beancount.github.io/"
+                windowService={windowService} ></BrowserLink>
             and
-            <ExternalBrowserLink text=" Fava" url="https://beancount.github.io/fava/index.html"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text=" Fava" url="https://beancount.github.io/fava/index.html"
+                windowService={windowService} ></BrowserLink>
             . The hope is to make the plaintext accounting experience more
             accessible, potentially to assist in group/organization bookkeeping.
         </div>
@@ -70,18 +62,18 @@ export function renderWhatIsNot(windowService: WindowService): React.ReactNode {
         </h3>
         <div >
             Beancolage is intended to be a
-            <i><ExternalBrowserLink text=" bricolage " url="https://en.wikipedia.org/wiki/Bricolage"
-                windowService={windowService} ></ExternalBrowserLink></i>
+            <i><BrowserLink text=" bricolage " url="https://en.wikipedia.org/wiki/Bricolage"
+                windowService={windowService} ></BrowserLink></i>
             and not intended to be a fully-integrated accounting tool.
             Notably, Beancolage doesn't try to support import workflows
             of a plaintext accounting system yet. Generally importers in the
             plaintext accounting space have been a challenge to collaboratively
             develop on - for now you might want to check Beancount's
-            <ExternalBrowserLink text=" external contribution " url="https://beancount.github.io/docs/external_contributions.html"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text=" external contribution " url="https://beancount.github.io/docs/external_contributions.html"
+                windowService={windowService} ></BrowserLink>
             guides on importing, such as
-            <ExternalBrowserLink text=" The Five Minute Ledger Update" url="https://reds-rants.netlify.app/personal-finance/the-five-minute-ledger-update/"
-                windowService={windowService} ></ExternalBrowserLink>.
+            <BrowserLink text=" The Five Minute Ledger Update" url="https://reds-rants.netlify.app/personal-finance/the-five-minute-ledger-update/"
+                windowService={windowService} ></BrowserLink>.
 
         </div>
     </div>;
@@ -98,8 +90,8 @@ export function renderTickets(windowService: WindowService): React.ReactNode {
         </h3>
         <div >
             For feature requests & bugs in Beancolage please consider opening an issue on the
-            <ExternalBrowserLink text=" Github project" url="https://github.com/seltzered/beancolage/issues/new/choose"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text=" Github project" url="https://github.com/seltzered/beancolage/issues/new/choose"
+                windowService={windowService} ></BrowserLink>
             . PR's Welcome 😉.
         </div>
     </div>;
@@ -115,12 +107,12 @@ export function renderDocumentation(windowService: WindowService): React.ReactNo
             Documentation
         </h3>
         <div >
-            <ExternalBrowserLink text="Beancount documentation" url="https://beancount.github.io/docs/"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text="Beancount documentation" url="https://beancount.github.io/docs/"
+                windowService={windowService} ></BrowserLink>
         </div>
         <div >
-            <ExternalBrowserLink text="Fava website" url="https://beancount.github.io/fava/index.html"
-                windowService={windowService} ></ExternalBrowserLink>
+            <BrowserLink text="Fava website" url="https://beancount.github.io/fava/index.html"
+                windowService={windowService} ></BrowserLink>
         </div>        
     </div>;
 }

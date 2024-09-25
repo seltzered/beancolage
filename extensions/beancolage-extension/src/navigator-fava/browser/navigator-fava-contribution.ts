@@ -629,7 +629,11 @@ export class NavigatorFavaContribution extends AbstractViewContribution<Navigato
      * Register commands to the `More Actions...` navigator toolbar item.
      */
     public registerMoreToolbarItem = (item: Mutable<TabBarToolbarItem>) => {
-        const commandId = item.command;
+        if( item.command == undefined) {
+            return;
+        }
+
+        const commandId: string = item.command;
         const id = 'navigator.tabbar.toolbar.' + commandId;
         const command = this.commandRegistry.getCommand(commandId);
         this.commandRegistry.registerCommand({ id, iconClass: command && command.iconClass }, {
