@@ -39,7 +39,7 @@
     "build:applications": "yarn build:extensions && lerna run --scope=\"beancolage*app\" build:prod --concurrency 1",
     "build:applications:dev": "yarn build:extensions && lerna run --scope=\"beancolage*app\" build --concurrency 1",
     "build:extensions": "lerna run --scope=\"beancolage*ext\" build",
-    "download:plugins": "theia download:plugins --rate-limit=15 --parallel=false --ignore-errors",
+    "download:plugins": "theia download:plugins --rate-limit=15 --parallel=false",
     "package:applications": "lerna run --scope=\"beancolage*app\" package --concurrency 1",
     "package:applications:preview": "lerna run --scope=\"beancolage*app\" package:preview --concurrency 1",
     "package:applications:prod": "lerna run --scope=\"beancolage*app\" package:prod --concurrency 1",
